@@ -41,35 +41,40 @@ public class Interface_Carnet extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
-        champNom = new javax.swing.JTextField();
-        champPrenom = new javax.swing.JTextField();
+        txtNom = new javax.swing.JTextField();
+        txtPrenom = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        champTelMobile = new javax.swing.JTextField();
-        champMailPerso = new javax.swing.JTextField();
+        intTelMobile = new javax.swing.JTextField();
+        txtMailPerso = new javax.swing.JTextField();
         btnenr = new javax.swing.JButton();
         btnan = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        champAppartBat = new javax.swing.JTextField();
+        txtAppartBat = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        champNumeroVoie = new javax.swing.JTextField();
+        intNumeroVoie = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        champAdresse = new javax.swing.JTextField();
+        txtLibelleVoie = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        champCodePostal = new javax.swing.JTextField();
+        intCodePostal = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
-        champVille = new javax.swing.JTextField();
+        txtVille = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        boutonRadioMonsieur = new javax.swing.JRadioButton();
-        boutonRadioMadame = new javax.swing.JRadioButton();
-        boutonRadioSociete = new javax.swing.JRadioButton();
-        champComplementNumeroVoie = new javax.swing.JTextField();
+        boutonCiviliteMonsieur = new javax.swing.JRadioButton();
+        boutonCiviliteMadame = new javax.swing.JRadioButton();
+        boutonCiviliteSociete = new javax.swing.JRadioButton();
+        txtComplementNumeroVoie = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        intTelFixe = new javax.swing.JTextField();
+        jLabel16 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        txtMailPro = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jButton2 = new javax.swing.JButton();
         champRechercheID = new javax.swing.JTextField();
@@ -97,11 +102,11 @@ public class Interface_Carnet extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        champNom.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
-        champNom.setMinimumSize(new java.awt.Dimension(4, 50));
-        champNom.addActionListener(new java.awt.event.ActionListener() {
+        txtNom.setFont(new java.awt.Font("Dialog", 0, 24)); // NOI18N
+        txtNom.setMinimumSize(new java.awt.Dimension(4, 50));
+        txtNom.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                champNomActionPerformed(evt);
+                txtNomActionPerformed(evt);
             }
         });
 
@@ -115,9 +120,9 @@ public class Interface_Carnet extends javax.swing.JFrame {
 
         jLabel5.setText("Mail perso");
 
-        champTelMobile.addActionListener(new java.awt.event.ActionListener() {
+        intTelMobile.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                champTelMobileActionPerformed(evt);
+                intTelMobileActionPerformed(evt);
             }
         });
 
@@ -139,17 +144,17 @@ public class Interface_Carnet extends javax.swing.JFrame {
 
         jLabel8.setText("Num voie");
 
-        champNumeroVoie.addActionListener(new java.awt.event.ActionListener() {
+        intNumeroVoie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                champNumeroVoieActionPerformed(evt);
+                intNumeroVoieActionPerformed(evt);
             }
         });
 
         jLabel9.setText("Adresse");
 
-        champAdresse.addActionListener(new java.awt.event.ActionListener() {
+        txtLibelleVoie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                champAdresseActionPerformed(evt);
+                txtLibelleVoieActionPerformed(evt);
             }
         });
 
@@ -163,54 +168,57 @@ public class Interface_Carnet extends javax.swing.JFrame {
 
         jLabel13.setText("Société");
 
-        boutonRadioMonsieur.addActionListener(new java.awt.event.ActionListener() {
+        boutonCiviliteMonsieur.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                boutonRadioMonsieurActionPerformed(evt);
+                boutonCiviliteMonsieurActionPerformed(evt);
             }
         });
 
-        champComplementNumeroVoie.addActionListener(new java.awt.event.ActionListener() {
+        txtComplementNumeroVoie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                champComplementNumeroVoieActionPerformed(evt);
+                txtComplementNumeroVoieActionPerformed(evt);
             }
         });
 
         jLabel14.setText("Complément Numéro Voie");
 
+        jLabel15.setText("Téléphone Fixe");
+
+        intTelFixe.setText("jTextField1");
+        intTelFixe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                intTelFixeActionPerformed(evt);
+            }
+        });
+
+        jLabel16.setText("Mail Pro");
+
+        txtMailPro.setText("jTextField2");
+        txtMailPro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtMailProActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(champMailPerso, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(49, 49, 49)
-                                .addComponent(btnenr)
-                                .addGap(101, 101, 101)
-                                .addComponent(btnan))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(259, 259, 259)
-                                .addComponent(jLabel1)))
-                        .addGap(0, 101, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(champComplementNumeroVoie)
-                            .addComponent(champTelMobile)
-                            .addComponent(champVille)
-                            .addComponent(champCodePostal)
-                            .addComponent(champAdresse)
-                            .addComponent(champNumeroVoie)
-                            .addComponent(champNom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(champPrenom)
-                            .addComponent(champAppartBat, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtComplementNumeroVoie, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(intTelMobile, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtVille, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(intCodePostal, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtLibelleVoie, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(intNumeroVoie, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtNom, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(txtPrenom, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtAppartBat)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel7)
                                     .addComponent(jLabel3)
@@ -220,22 +228,47 @@ public class Interface_Carnet extends javax.swing.JFrame {
                                         .addGap(68, 68, 68)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel12)
-                                            .addComponent(boutonRadioMadame))
+                                            .addComponent(boutonCiviliteMadame))
                                         .addGap(43, 43, 43)
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(boutonRadioSociete)
+                                            .addComponent(boutonCiviliteSociete)
                                             .addComponent(jLabel13)))
-                                    .addComponent(boutonRadioMonsieur)
+                                    .addComponent(boutonCiviliteMonsieur)
                                     .addComponent(jLabel8)
                                     .addComponent(jLabel9)
                                     .addComponent(jLabel6)
                                     .addComponent(jLabel10)
-                                    .addComponent(jLabel4))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                    .addComponent(jLabel4)
+                                    .addComponent(jLabel14)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jLabel15)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(intTelFixe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(0, 0, Short.MAX_VALUE))))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(49, 49, 49)
+                                .addComponent(btnenr)
+                                .addGap(101, 101, 101)
+                                .addComponent(btnan))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(259, 259, 259)
+                                .addComponent(jLabel1))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(jLabel5)
+                                .addGap(3, 3, 3)
+                                .addComponent(txtMailPerso, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 101, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel14)
+                .addComponent(jLabel16)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtMailPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -250,50 +283,59 @@ public class Interface_Carnet extends javax.swing.JFrame {
                     .addComponent(jLabel13))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(boutonRadioMadame, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(boutonRadioSociete)
-                    .addComponent(boutonRadioMonsieur))
+                    .addComponent(boutonCiviliteMadame, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(boutonCiviliteSociete)
+                    .addComponent(boutonCiviliteMonsieur))
                 .addGap(10, 10, 10)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(champNom, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtNom, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(champPrenom, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtPrenom, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(champAppartBat, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtAppartBat, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(champNumeroVoie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(16, 16, 16)
+                .addComponent(intNumeroVoie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel14)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(champComplementNumeroVoie, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtComplementNumeroVoie, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(champAdresse, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtLibelleVoie, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel6)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(champCodePostal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(intCodePostal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(champVille, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtVille, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(champTelMobile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(intTelMobile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel15)
+                    .addComponent(intTelFixe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(champMailPerso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtMailPerso, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMailPro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnenr)
                     .addComponent(btnan))
@@ -406,14 +448,18 @@ public class Interface_Carnet extends javax.swing.JFrame {
             PreparedStatement ps = maConnexion.getConnexion().prepareStatement(req);
 
             // recuperation des champs de l'écran
-            String nom = champNom.getText();
-            String prenom = champPrenom.getText();
-            String appartbat = champAppartBat.getText();
-            String numeroVoie = champNumeroVoie.getText();
-            String complementNumeroVoie = champComplementNumeroVoie.getText();
-            String adresse = champAdresse.getText();
-            String telephone_mobile = champTelMobile.getText();
-            String mail_perso = champMailPerso.getText();
+            String nom = txtNom.getText();
+            String prenom = txtPrenom.getText();
+            String appartbat = txtAppartBat.getText();
+            String numeroVoie = intNumeroVoie.getText();
+            String complementNumeroVoie = txtComplementNumeroVoie.getText();
+            String libelleVoie = txtLibelleVoie.getText();
+            String codePostal = intCodePostal.getText();
+            String ville = txtVille.getText();
+            String telephone_mobile = intTelMobile.getText();
+            String telephone_fixe = intTelFixe.getText();
+            String mail_perso = txtMailPerso.getText();
+            String mail_pro = txtMailPro.getText();
 
             // preparation des valeurs a transmettre dans ma requette
             ps.setString(1, nom);
@@ -454,10 +500,10 @@ public class Interface_Carnet extends javax.swing.JFrame {
             resultat = ps.executeQuery(req);
             // tant qu'il a des données correspondant à notre sélect-> on recupere les donnée
             while (resultat.next()) {
-                champNom.setText(resultat.getString("nom"));     // 
-                champPrenom.setText(resultat.getString("prenom"));     // position 3 -> prenom
-                champTelMobile.setText(resultat.getString("telephone_mobile"));     // position 4 -> contact
-                champMailPerso.setText(resultat.getString("mail_perso"));     // position 5 -> mail
+                txtNom.setText(resultat.getString("nom"));     // 
+                txtPrenom.setText(resultat.getString("prenom"));     // position 3 -> prenom
+                intTelMobile.setText(resultat.getString("telephone_mobile"));     // position 4 -> contact
+                txtMailPerso.setText(resultat.getString("mail_perso"));     // position 5 -> mail
 
             }
             // TODO exception si enregistrement non trouve 
@@ -501,10 +547,10 @@ public class Interface_Carnet extends javax.swing.JFrame {
             resultat = ps.executeQuery(req);
             // tant qu'il a des données correspondant à notre sélect-> on recupere les donnée
             while (resultat.next()) {
-                champNom.setText(resultat.getString("nom"));     // position 2 -> nom
-                champPrenom.setText(resultat.getString("prenom"));     // position 3 -> prenom
-                champTelMobile.setText(resultat.getString("telephone_mobile"));     // position 4 -> contact
-                champMailPerso.setText(resultat.getString("mail_perso"));     // position 5 -> mail
+                txtNom.setText(resultat.getString("nom"));     // position 2 -> nom
+                txtPrenom.setText(resultat.getString("prenom"));     // position 3 -> prenom
+                intTelMobile.setText(resultat.getString("telephone_mobile"));     // position 4 -> contact
+                txtMailPerso.setText(resultat.getString("mail_perso"));     // position 5 -> mail
 
             }
         } catch (SQLException ex) {
@@ -531,29 +577,37 @@ public class Interface_Carnet extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void champTelMobileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_champTelMobileActionPerformed
+    private void intTelMobileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_intTelMobileActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_champTelMobileActionPerformed
+    }//GEN-LAST:event_intTelMobileActionPerformed
 
-    private void champAdresseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_champAdresseActionPerformed
+    private void txtLibelleVoieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLibelleVoieActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_champAdresseActionPerformed
+    }//GEN-LAST:event_txtLibelleVoieActionPerformed
 
-    private void boutonRadioMonsieurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutonRadioMonsieurActionPerformed
+    private void boutonCiviliteMonsieurActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutonCiviliteMonsieurActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_boutonRadioMonsieurActionPerformed
+    }//GEN-LAST:event_boutonCiviliteMonsieurActionPerformed
 
-    private void champNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_champNomActionPerformed
+    private void txtNomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_champNomActionPerformed
+    }//GEN-LAST:event_txtNomActionPerformed
 
-    private void champNumeroVoieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_champNumeroVoieActionPerformed
+    private void intNumeroVoieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_intNumeroVoieActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_champNumeroVoieActionPerformed
+    }//GEN-LAST:event_intNumeroVoieActionPerformed
 
-    private void champComplementNumeroVoieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_champComplementNumeroVoieActionPerformed
+    private void txtComplementNumeroVoieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtComplementNumeroVoieActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_champComplementNumeroVoieActionPerformed
+    }//GEN-LAST:event_txtComplementNumeroVoieActionPerformed
+
+    private void intTelFixeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_intTelFixeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_intTelFixeActionPerformed
+
+    private void txtMailProActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMailProActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtMailProActionPerformed
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {
 
         // on instancie notre objet tableau
@@ -598,23 +652,17 @@ public class Interface_Carnet extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JRadioButton boutonRadioMadame;
-    private javax.swing.JRadioButton boutonRadioMonsieur;
-    private javax.swing.JRadioButton boutonRadioSociete;
+    private javax.swing.JRadioButton boutonCiviliteMadame;
+    private javax.swing.JRadioButton boutonCiviliteMonsieur;
+    private javax.swing.JRadioButton boutonCiviliteSociete;
     private javax.swing.JButton btnan;
     private javax.swing.JButton btnenr;
-    private javax.swing.JTextField champAdresse;
-    private javax.swing.JTextField champAppartBat;
-    private javax.swing.JTextField champCodePostal;
-    private javax.swing.JTextField champComplementNumeroVoie;
-    private javax.swing.JTextField champMailPerso;
-    private javax.swing.JTextField champNom;
-    private javax.swing.JTextField champNumeroVoie;
-    private javax.swing.JTextField champPrenom;
     private javax.swing.JTextField champRechercheID;
     private javax.swing.JTextField champRechercheNom;
-    private javax.swing.JTextField champTelMobile;
-    private javax.swing.JTextField champVille;
+    private javax.swing.JTextField intCodePostal;
+    private javax.swing.JTextField intNumeroVoie;
+    private javax.swing.JTextField intTelFixe;
+    private javax.swing.JTextField intTelMobile;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
@@ -626,6 +674,8 @@ public class Interface_Carnet extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -638,15 +688,24 @@ public class Interface_Carnet extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField txtAppartBat;
+    private javax.swing.JTextField txtComplementNumeroVoie;
+    private javax.swing.JTextField txtLibelleVoie;
+    private javax.swing.JTextField txtMailPerso;
+    private javax.swing.JTextField txtMailPro;
+    private javax.swing.JTextField txtNom;
+    private javax.swing.JTextField txtPrenom;
+    private javax.swing.JTextField txtVille;
     // End of variables declaration//GEN-END:variables
 
     private void raz_zones() {
         
         champRechercheID.setText("");
         champRechercheNom.setText("");
-        champNom.setText("");
-        champPrenom.setText("");
-        champTelMobile.setText("");
-        champMailPerso.setText("");
+        txtNom.setText("");
+        txtPrenom.setText("");
+        intTelMobile.setText("");
+        txtMailPerso.setText("");
     }
 }
