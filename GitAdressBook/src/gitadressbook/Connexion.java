@@ -27,15 +27,13 @@ public class Connexion {
         
                     
         try {
-           // Class.forName("com.mysql.jdbc.Driver");
-            System.out.println("Driver Chargé");
-            //String url = "jdbc:mysql://" + host + ":" + port + "/" + base;
-
+        
             String url;
             url = "jdbc:mysql://localhost:3306/carnet_adresse";
             String login = "root";
             String password = "1234512345";
             con = DriverManager.getConnection(url, login, password);
+            System.out.println("Driver Chargé");
 
         } catch (SQLException ex) {
             Logger.getLogger(Connexion.class.getName()).log(Level.SEVERE, null, ex);

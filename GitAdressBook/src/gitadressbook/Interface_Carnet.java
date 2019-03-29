@@ -58,7 +58,6 @@ public class Interface_Carnet extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         rechnom = new javax.swing.JTextField();
         jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
 
         jButton1.setText("jButton1");
 
@@ -137,8 +136,6 @@ public class Interface_Carnet extends javax.swing.JFrame {
             }
         });
 
-        jButton6.setText("Liste");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -164,24 +161,19 @@ public class Interface_Carnet extends javax.swing.JFrame {
                     .addComponent(txtprenom)
                     .addComponent(txtnom))
                 .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(rechnom, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE))))
+                        .addComponent(txtid, javax.swing.GroupLayout.PREFERRED_SIZE, 77, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jButton6)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                        .addComponent(rechnom, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -205,13 +197,12 @@ public class Interface_Carnet extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(txtcontact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6))
+                    .addComponent(txtcontact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(txtemail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnenr)
                     .addComponent(btnan))
@@ -251,12 +242,13 @@ public class Interface_Carnet extends javax.swing.JFrame {
             String nom = txtnom.getText();
             String prenom = txtprenom.getText();
             String contact = txtcontact.getText();
-            String email = txtemail.getText();
+            String mail = txtemail.getText();
 
+            // preparation des valeurs a transmettre dans ma requette
             ps.setString(1, nom);
             ps.setString(2, prenom);
             ps.setString(3, contact);
-            ps.setString(4, email);
+            ps.setString(4, mail);
 
             // execution de ma requetes préparées
             ps.executeUpdate();
@@ -265,12 +257,7 @@ public class Interface_Carnet extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Requête executée avec succés.");
 
             // RAZ de mes champs
-            txtid.setText("");
-            rechnom.setText("");
-            txtnom.setText("");
-            txtprenom.setText("");
-            txtcontact.setText("");
-            txtemail.setText("");
+           raz_zones();
 
         } catch (SQLException ex) {
             Logger.getLogger(Interface_Carnet.class.getName()).log(Level.SEVERE, null, ex);
@@ -280,12 +267,7 @@ public class Interface_Carnet extends javax.swing.JFrame {
     // boutton annuler
     private void btnanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnanActionPerformed
         // RAZ de mes champs
-        txtid.setText("");
-        rechnom.setText("");
-        txtnom.setText("");
-        txtprenom.setText("");
-        txtcontact.setText("");
-        txtemail.setText("");
+        raz_zones();
     }//GEN-LAST:event_btnanActionPerformed
 
     // recherche par ID
@@ -301,7 +283,7 @@ public class Interface_Carnet extends javax.swing.JFrame {
             resultat = ps.executeQuery(req);
             // tant qu'il a des données correspondant à notre sélect-> on recupere les donnée
             while (resultat.next()) {
-                txtnom.setText(resultat.getString((2)));     // position 2 -> nom
+                txtnom.setText(resultat.getString("nom"));     // position 2 -> nom dans la base Mysql
                 txtprenom.setText(resultat.getString((3)));     // position 3 -> prenom
                 txtcontact.setText(resultat.getString((4)));     // position 4 -> contact
                 txtemail.setText(resultat.getString((5)));     // position 5 -> mail
@@ -324,15 +306,12 @@ public class Interface_Carnet extends javax.swing.JFrame {
             PreparedStatement ps = maConnexion.getConnexion().prepareStatement(req);
             ps.setInt(1, Integer.parseInt(txtid.getText()));
             int count = ps.executeUpdate();
-            JOptionPane.showMessageDialog(this, count + " Donnée supprimer avec succés");
+            // affichage popup
+            JOptionPane.showMessageDialog(this, count + " Donnée supprimée avec succés");
 
             // mise à blanc des zones de l'écran
-            txtid.setText("");
-            rechnom.setText("");
-            txtnom.setText("");
-            txtprenom.setText("");
-            txtcontact.setText("");
-            txtemail.setText("");
+            raz_zones();
+
         } catch (SQLException ex) {
             Logger.getLogger(Interface_Carnet.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -351,7 +330,7 @@ public class Interface_Carnet extends javax.swing.JFrame {
             resultat = ps.executeQuery(req);
             // tant qu'il a des données correspondant à notre sélect-> on recupere les donnée
             while (resultat.next()) {
-                txtnom.setText(resultat.getString((2)));     // position 2 -> nom
+                txtnom.setText(resultat.getString("nom"));     // position 2 -> nom
                 txtprenom.setText(resultat.getString((3)));     // position 3 -> prenom
                 txtcontact.setText(resultat.getString((4)));     // position 4 -> contact
                 txtemail.setText(resultat.getString((5)));     // position 5 -> mail
@@ -374,12 +353,8 @@ public class Interface_Carnet extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, count + " Donnée supprimer avec succés");
 
             // mise à blanc des zones de l'écran
-            txtid.setText("");
-            rechnom.setText("");
-            txtnom.setText("");
-            txtprenom.setText("");
-            txtcontact.setText("");
-            txtemail.setText("");
+            raz_zones();
+            
         } catch (SQLException ex) {
             Logger.getLogger(Interface_Carnet.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -435,7 +410,6 @@ public class Interface_Carnet extends javax.swing.JFrame {
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -451,4 +425,14 @@ public class Interface_Carnet extends javax.swing.JFrame {
     private javax.swing.JTextField txtnom;
     private javax.swing.JTextField txtprenom;
     // End of variables declaration//GEN-END:variables
+
+    private void raz_zones() {
+        
+        txtid.setText("");
+        rechnom.setText("");
+        txtnom.setText("");
+        txtprenom.setText("");
+        txtcontact.setText("");
+        txtemail.setText("");
+    }
 }
