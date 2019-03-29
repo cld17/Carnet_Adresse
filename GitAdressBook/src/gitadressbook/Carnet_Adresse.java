@@ -17,8 +17,8 @@ public class Carnet_Adresse {
     public static void main(String[] args) {
         // construit la vue
         
-        Interface_Carnet carnet = new Interface_Carnet();
-        
+        //Interface_Carnet carnet = new Interface_Carnet();
+        InterfaceVue carnet = new InterfaceVue();
         
         carnet.setVisible(true);
     }
