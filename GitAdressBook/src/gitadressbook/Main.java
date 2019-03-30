@@ -9,7 +9,7 @@ package gitadressbook;
  *
  * @author A faire 
  */
-public class Carnet_Adresse {
+public class Main {
 
     /**
      * @param args the command line arguments
@@ -17,8 +17,8 @@ public class Carnet_Adresse {
     public static void main(String[] args) {
         // construit la vue
         
-        //Interface_Carnet carnet = new Interface_Carnet();
-        InterfaceVue carnet = new InterfaceVue();
+        InterfaceCarnet carnet = new InterfaceCarnet();
+        
         
         carnet.setVisible(true);
     }

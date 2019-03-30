@@ -5,7 +5,6 @@
  */
 package gitadressbook;
 
-import util.DBUtil;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
 public class Tableau extends javax.swing.JFrame {
     // instancie la connexion
 
-    DBUtil maConnexion = new DBUtil();
+    Connexion maConnexion = new Connexion();
 
     /**
      * Creates new form Tableau
