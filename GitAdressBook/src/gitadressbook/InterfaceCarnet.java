@@ -1,7 +1,8 @@
 package gitadressbook;
 
-import controller.ControleFormulaire;
-import util.DBUtil;
+import controller.FormController;
+import model.Address;
+
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -20,7 +21,7 @@ import javax.swing.JOptionPane;
  */
 public class InterfaceCarnet extends javax.swing.JFrame {
 
-    ControleFormulaire controller = new ControleFormulaire();
+    FormController controller = new FormController();
     /**
      * Creates new form Interface_Carnet
      */
@@ -465,56 +466,23 @@ public class InterfaceCarnet extends javax.swing.JFrame {
 
     private void btnenrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnenrActionPerformed
 
-        controller.insertAddress();
-        String req;
-        // prepare notre sql de création
+        Address address = new Address();
+        address.setCivilite("M.");
+        address.setNom(txtNom.getText());
+        address.setPrenom(txtPrenom.getText());
+        address.setAppartbat(txtAppartBat.getText());
+        address.setNumeroVoie(intNumeroVoie.getText());
+        address.setComplementNumeroVoie(txtComplementNumeroVoie.getText());
+        address.setLibelleVoie(txtLibelleVoie.getText());
+        address.setCodePostal(intCodePostal.getText());
+        address.setVille(txtVille.getText());
+        address.setTelephoneMobile(intTelMobile.getText());
+        address.setTelephoneFixe(intTelFixe.getText());
+        address.setMailPerso(txtMailPerso.getText());
+        address.setMailPro(txtMailPro.getText());
 
-        req = "insert into carnet (`civilite`,`nom`,`prenom`,`appart_bat`,`numero_voie`,`complement_numero_voie`,`libelle_voie`,`code_postal`,`ville`,`telephone_mobile`,`telephone_fixe`,`mail_perso`,`mail_pro`) values (?,?,?,?,?,?,?,?,?,?,?,?,?)";
-        try {
-            PreparedStatement ps = maConnexion.getConnexion().prepareStatement(req);
+        controller.insertAddress(address);
 
-            // recuperation des champs de l'écran
-            String civilite = "M."; // a récupérer
-            String nom = txtNom.getText();
-            String prenom = txtPrenom.getText();
-            String appartbat = txtAppartBat.getText();
-            String numeroVoie = intNumeroVoie.getText();
-            String complementNumeroVoie = txtComplementNumeroVoie.getText();
-            String libelleVoie = txtLibelleVoie.getText();
-            String codePostal = intCodePostal.getText();
-            String ville = txtVille.getText();
-            String telephone_mobile = intTelMobile.getText();
-            String telephone_fixe = intTelFixe.getText();
-            String mail_perso = txtMailPerso.getText();
-            String mail_pro = txtMailPro.getText();
-
-            // preparation des valeurs a transmettre dans ma requette
-            ps.setString(1, civilite);
-            ps.setString(2, nom);
-            ps.setString(3, prenom);
-            ps.setString(4, appartbat);
-            ps.setString(5, numeroVoie);
-            ps.setString(6, complementNumeroVoie);
-            ps.setString(7, libelleVoie);
-            ps.setString(8, codePostal);
-            ps.setString(9, ville);
-            ps.setString(10, telephone_mobile);
-            ps.setString(11, telephone_fixe);
-            ps.setString(12, mail_perso);
-            ps.setString(13, mail_pro);
-
-            // execution de ma requetes préparées
-            ps.executeUpdate();
-
-            // popup réussite
-            JOptionPane.showMessageDialog(this, "Requête executée avec succés.");
-
-            // RAZ de mes champs
-            raz_zones();
-
-        } catch (SQLException ex) {
-            Logger.getLogger(InterfaceCarnet.class.getName()).log(Level.SEVERE, null, ex);
-        }
 
     }//GEN-LAST:event_btnenrActionPerformed
     // boutton annuler
