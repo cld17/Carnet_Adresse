@@ -465,6 +465,7 @@ public class InterfaceCarnet extends javax.swing.JFrame {
 
     private void btnenrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnenrActionPerformed
 
+        controller.insertAddress();
         String req;
         // prepare notre sql de création
 
