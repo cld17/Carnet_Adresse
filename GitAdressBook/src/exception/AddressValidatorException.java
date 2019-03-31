@@ -1,6 +1,6 @@
 package exception;
 
-import util.FormatErrorEnum;
+import response.FormatErrorEnum;
 
 public class AddressValidatorException extends Exception {
 

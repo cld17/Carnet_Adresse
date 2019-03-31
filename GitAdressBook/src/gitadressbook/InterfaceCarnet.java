@@ -2,13 +2,16 @@ package gitadressbook;
 
 import controller.FormController;
 import model.Address;
+import response.CustomResponse;
+import response.FormatErrorEnum;
+import util.DBUtil;
 
+import javax.swing.*;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -464,6 +467,48 @@ public class InterfaceCarnet extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(InterfaceCarnet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(InterfaceCarnet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(InterfaceCarnet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(InterfaceCarnet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(() -> {
+            new InterfaceCarnet().setVisible(true);
+        });
+    }
+
+    // boutton annuler
+    private void btnanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnanActionPerformed
+        // RAZ de mes champs
+        raz_zones();
+    }//GEN-LAST:event_btnanActionPerformed
+
     private void btnenrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnenrActionPerformed
 
         Address address = new Address();
@@ -481,15 +526,23 @@ public class InterfaceCarnet extends javax.swing.JFrame {
         address.setMailPerso(txtMailPerso.getText());
         address.setMailPro(txtMailPro.getText());
 
-        controller.insertAddress(address);
+        CustomResponse resultat = controller.createAddress(address);
+        if (resultat.getResponseCode().equals(FormatErrorEnum.SUCCESS)) {
+            // RAZ de mes champs
+            raz_zones();
+
+            // popup réussite
+            JOptionPane.showMessageDialog(this, "......");
+        } else {
+            // TODO : mettre des champs en rouge
+            // TODO;popup
+            resultat.getResponseCode();
+            resultat.getErrorMessage();
+        }
 
 
     }//GEN-LAST:event_btnenrActionPerformed
-    // boutton annuler
-    private void btnanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnanActionPerformed
-        // RAZ de mes champs
-        raz_zones();
-    }//GEN-LAST:event_btnanActionPerformed
+    // supprimer /nom dans carnet
 
    // recherche par nom
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -497,7 +550,7 @@ public class InterfaceCarnet extends javax.swing.JFrame {
         // préparation de la requete de sélection
         req = "select * from carnet where nom = '" + txtNom.getText() + "'";
         try {
-            PreparedStatement ps = maConnexion.getConnexion().prepareStatement(req);
+            PreparedStatement ps = DBUtil.connexion().prepareStatement(req);
             //
             ResultSet resultat;
             resultat = ps.executeQuery(req);
@@ -509,29 +562,12 @@ public class InterfaceCarnet extends javax.swing.JFrame {
                 txtMailPerso.setText(resultat.getString("mail_perso"));     // position 5 -> mail
 
             }
+            DBUtil.deconnexion();
         } catch (SQLException ex) {
-            // TODO exception si enregistrement non trouve 
+            // TODO exception si enregistrement non trouve
             Logger.getLogger(InterfaceCarnet.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_jButton4ActionPerformed
-    // supprimer /nom dans carnet
-
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        String req;
-        req = "delete from carnet where nom =?";
-        try {
-            PreparedStatement ps = maConnexion.getConnexion().prepareStatement(req);
-            // TODO ps.setText(1, String(rechnom.getText()));
-            int count = ps.executeUpdate();
-            JOptionPane.showMessageDialog(this, count + " Donnée supprimer avec succés");
-
-            // mise à blanc des zones de l'écran
-            raz_zones();
-
-        } catch (SQLException ex) {
-            Logger.getLogger(InterfaceCarnet.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_jButton5ActionPerformed
 
     private void intTelMobileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_intTelMobileActionPerformed
         // TODO add your handling code here:
@@ -577,41 +613,23 @@ public class InterfaceCarnet extends javax.swing.JFrame {
         tableau.setVisible(true);
     }
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        String req;
+        req = "delete from carnet where nom =?";
         try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(InterfaceCarnet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(InterfaceCarnet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(InterfaceCarnet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(InterfaceCarnet.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
+            PreparedStatement ps = DBUtil.connexion().prepareStatement(req);
+            // TODO ps.setText(1, String(rechnom.getText()));
+            int count = ps.executeUpdate();
+            JOptionPane.showMessageDialog(this, count + " Donnée supprimer avec succés");
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> {
-            new InterfaceCarnet().setVisible(true);
-        });
-    }
+            // mise à blanc des zones de l'écran
+            raz_zones();
+
+            DBUtil.deconnexion();
+        } catch (SQLException ex) {
+            Logger.getLogger(InterfaceCarnet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton boutonCiviliteMadame;
