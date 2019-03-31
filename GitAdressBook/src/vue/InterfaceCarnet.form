@@ -476,7 +476,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="jButton4">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Recherche par nom"/>
+                <Property name="text" type="java.lang.String" value="Recherche"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>
@@ -508,7 +508,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel2">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Nom"/>
+                <Property name="text" type="java.lang.String" value="Nom*"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel3">
@@ -523,7 +523,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel5">
               <Properties>
-                <Property name="text" type="java.lang.String" value="N&#xb0; voie"/>
+                <Property name="text" type="java.lang.String" value="N&#xb0; voie*"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel6">
@@ -538,12 +538,12 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel8">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Code postal"/>
+                <Property name="text" type="java.lang.String" value="Code postal*"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel9">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Ville"/>
+                <Property name="text" type="java.lang.String" value="Ville*"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel10">

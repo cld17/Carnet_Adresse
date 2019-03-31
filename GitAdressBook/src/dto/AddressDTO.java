@@ -5,13 +5,13 @@ public class AddressDTO {
     String nom;
     String prenom;
     String appartbat;
-    int numeroVoie;
+    Integer numeroVoie;
     String complementNumeroVoie;
     String libelleVoie;
-    int codePostal;
+    Integer codePostal;
     String ville;
-    int telephoneMobile;
-    int telephoneFixe;
+    Integer telephoneMobile;
+    Integer telephoneFixe;
     String mailPerso;
     String mailPro;
 
@@ -50,11 +50,11 @@ public class AddressDTO {
         this.appartbat = appartbat;
     }
 
-    public int getNumeroVoie() {
+    public Integer getNumeroVoie() {
         return numeroVoie;
     }
 
-    public void setNumeroVoie(int numeroVoie) {
+    public void setNumeroVoie(Integer numeroVoie) {
         this.numeroVoie = numeroVoie;
     }
 
@@ -74,11 +74,11 @@ public class AddressDTO {
         this.libelleVoie = libelleVoie;
     }
 
-    public int getCodePostal() {
+    public Integer getCodePostal() {
         return codePostal;
     }
 
-    public void setCodePostal(int codePostal) {
+    public void setCodePostal(Integer codePostal) {
         this.codePostal = codePostal;
     }
 
@@ -90,19 +90,19 @@ public class AddressDTO {
         this.ville = ville;
     }
 
-    public int getTelephoneMobile() {
+    public Integer getTelephoneMobile() {
         return telephoneMobile;
     }
 
-    public void setTelephoneMobile(int telephoneMobile) {
+    public void setTelephoneMobile(Integer telephoneMobile) {
         this.telephoneMobile = telephoneMobile;
     }
 
-    public int getTelephoneFixe() {
+    public Integer getTelephoneFixe() {
         return telephoneFixe;
     }
 
-    public void setTelephoneFixe(int telephoneFixe) {
+    public void setTelephoneFixe(Integer telephoneFixe) {
         this.telephoneFixe = telephoneFixe;
     }
 

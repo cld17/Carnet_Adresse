@@ -64,10 +64,10 @@ public class AddressDAOJdbc implements AddressDAO {
         String select = "SELECT * FROM carnet ";
         String where = "WHERE ";
         if(addressDTO.getNom() != null) {
-            where += "nom = '" + addressDTO.getNom() + "'" ;
+            where += "nom = '" + addressDTO.getNom() + "' " ;
         }
         if(addressDTO.getLibelleVoie() != null) {
-            where += "libbelle_voie LIKE ('%" + addressDTO.getNom() + "%)'" ;
+            where += "libbelle_voie LIKE ('%" + addressDTO.getNom() + "%)' " ;
         }
         // TODO ...
         String order = "ORDER BY nom";
@@ -84,10 +84,10 @@ public class AddressDAOJdbc implements AddressDAO {
             PreparedStatement ps = connexion.prepareStatement(req);
             // preparation des valeurs a transmettre dans ma requette
            
-            ps.setString(2, addressDTO.getNom());
-            ps.setString(7, addressDTO.getLibelleVoie());
-            ps.setInt(8, addressDTO.getCodePostal());
-            ps.setString(9, addressDTO.getVille());
+            //ps.setString(2, addressDTO.getNom());
+            //ps.setString(7, addressDTO.getLibelleVoie());
+            //ps.setInt(8, addressDTO.getCodePostal());
+            //ps.setString(9, addressDTO.getVille());
             //
             ResultSet resultat;
             resultat = ps.executeQuery(req);

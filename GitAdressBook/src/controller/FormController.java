@@ -60,7 +60,7 @@ public class FormController {
 
         customResponse.setResponseCode(FormatErrorEnum.SUCCESS);
 
-        return null;
+        return customResponse;
     }
 
     public CustomResponse retrieveAddress(Address address) {
