@@ -1,4 +1,4 @@
-package gitadressbook;
+package vue;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

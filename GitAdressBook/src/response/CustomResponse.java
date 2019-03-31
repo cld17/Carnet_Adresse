@@ -1,9 +1,16 @@
 package response;
 
+import model.Address;
+
+import java.util.List;
+
 public class CustomResponse {
+
+    // TODO : amélioration : hashmap
 
     private FormatErrorEnum responseCode;
     private String errorMessage;
+    private List<Address> addresses;
 
     public CustomResponse() {
     }
@@ -22,5 +29,13 @@ public class CustomResponse {
 
     public void setErrorMessage(String errorMessage) {
         this.errorMessage = errorMessage;
+    }
+
+    public List<Address> getAddresses() {
+        return addresses;
+    }
+
+    public void setAddresses(List<Address> addresses) {
+        this.addresses = addresses;
     }
 }

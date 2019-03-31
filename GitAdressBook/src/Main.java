@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vue;
+
+import vue.InterfaceCarnet;
 
 /**
- *
- * @author A faire 
+ * @author A faire
  */
 public class Main {
 
@@ -16,11 +16,11 @@ public class Main {
      */
     public static void main(String[] args) {
         // construit la vue
-        
-        //Interface_Carnet carnet = new Interface_Carnet();
-        InterfaceVue carnet = new InterfaceVue();
-        
+
+        InterfaceCarnet carnet = new InterfaceCarnet();
+
+
         carnet.setVisible(true);
     }
-    
+
 }
