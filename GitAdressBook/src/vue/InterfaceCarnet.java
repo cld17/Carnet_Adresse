@@ -806,7 +806,23 @@ public class InterfaceCarnet extends javax.swing.JFrame {
         String id = (String) jTable2.getModel().getValueAt(ligne, 0);
 
         Address clickedAddress = addresseMap.get(id);
+        txtId.setText(clickedAddress.getId());
         txtNom.setText(clickedAddress.getNom());
+         txtPrenom.setText(clickedAddress.getPrenom());
+        intTelMobile.setText(clickedAddress.getTelephoneMobile());
+        txtMailPerso.setText(clickedAddress.getMailPerso());
+        txtAppartBat.setText(clickedAddress.getAppartbat());
+        txtComplementNumeroVoie.setText(clickedAddress.getComplementNumeroVoie());
+        txtLibelleVoie.setText(clickedAddress.getLibelleVoie());
+        txtMailPro.setText(clickedAddress.getMailPro());
+        txtVille.setText(clickedAddress.getVille());
+        intCodePostal.setText(clickedAddress.getCodePostal());
+        intNumeroVoie.setText(clickedAddress.getNumeroVoie());
+        intTelFixe.setText(clickedAddress.getTelephoneFixe());
+        hiddenButton.setSelected(true);       
+        // TODO
+        
+        
 
 
     }//GEN-LAST:event_jTable2MouseClicked
@@ -848,7 +864,7 @@ public class InterfaceCarnet extends javax.swing.JFrame {
             raz_zones();
 
             // popup réussite
-            JOptionPane.showMessageDialog(this, "Contact enregistré avec succés.");
+            JOptionPane.showMessageDialog(this, "Contact mise a jour avec succés.");
         } else {
             // TODO : mettre des champs en rouge
             // TODO;popup 
