@@ -451,13 +451,34 @@
               </Properties>
             </Component>
             <Component class="javax.swing.JRadioButton" name="boutonCiviliteMonsieur">
+              <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="buttonGroup1"/>
+                </Property>
+              </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boutonCiviliteMonsieurActionPerformed"/>
               </Events>
             </Component>
             <Component class="javax.swing.JRadioButton" name="boutonCiviliteMadame">
+              <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="buttonGroup1"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boutonCiviliteMadameActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JRadioButton" name="boutonCiviliteSociete">
+              <Properties>
+                <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+                  <ComponentRef name="buttonGroup1"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="boutonCiviliteSocieteActionPerformed"/>
+              </Events>
             </Component>
             <Component class="javax.swing.JTextField" name="txtComplementNumeroVoie">
               <Events>
@@ -476,7 +497,7 @@
             </Component>
             <Component class="javax.swing.JButton" name="jButton4">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Recherche"/>
+                <Property name="text" type="java.lang.String" value="Rechercher" preCode="&#xa;"/>
               </Properties>
               <Events>
                 <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton4ActionPerformed"/>

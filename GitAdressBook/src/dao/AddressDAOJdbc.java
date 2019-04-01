@@ -62,30 +62,53 @@ public class AddressDAOJdbc implements AddressDAO {
         // préparation de la requete de sélection
         // construire ma requete if nom rempli etc.....
         // TODO
-        
+
         String select = "SELECT * FROM carnet ";
         String where = "WHERE ";
-        if(addressDTO.getNom() != null) {
-            where += "nom = '" + addressDTO.getNom() + "' " ;
+        Integer compteurAnd = 0;
+        if (addressDTO.getNom() != null) {
+            where += "nom = '" + addressDTO.getNom() + "' ";
+            compteurAnd++;
         }
-        if(addressDTO.getLibelleVoie() != null) {
-            where += "libbelle_voie LIKE ('%" + addressDTO.getNom() + "%)' " ;
+        if (addressDTO.getLibelleVoie() != null) {
+            if (compteurAnd == 1) {
+                where += " AND ";
+                compteurAnd = 0;
+            }
+            where += "libelle_voie LIKE ('%" + addressDTO.getLibelleVoie() + "%') ";
+            compteurAnd++;
+        }
+        if (addressDTO.getCodePostal() != null) {
+            if (compteurAnd == 1) {
+                where += " AND ";
+                compteurAnd = 0;
+            }
+            where += "code_postal LIKE ('%" + addressDTO.getCodePostal() + "%') ";
+            compteurAnd++;
+        }
+        if (addressDTO.getVille() != null) {
+            if (compteurAnd == 1) {
+                where += " AND ";
+            }
+            where += "ville LIKE ('%" + addressDTO.getVille() + "%') ";
         }
         // TODO ...
         String order = "ORDER BY nom";
-        
+
         req = select + where + order;
+        System.out.println(req);
         
+
         // création liste pour récuperer enregistrement base
-            List<AddressDTO> addressDTOList = new ArrayList();
-            
+        List<AddressDTO> addressDTOList = new ArrayList();
+
         try {
             // ouverture connexion            
             Connection connexion = DBUtil.connexion();
-            
+
             PreparedStatement ps = connexion.prepareStatement(req);
             // preparation des valeurs a transmettre dans ma requette
-           
+
             //ps.setString(2, addressDTO.getNom());
             //ps.setString(7, addressDTO.getLibelleVoie());
             //ps.setInt(8, addressDTO.getCodePostal());
@@ -93,22 +116,25 @@ public class AddressDAOJdbc implements AddressDAO {
             //
             ResultSet resultat;
             resultat = ps.executeQuery(req);
-            
+
             // tant qu'il a des données correspondant à notre sélect-> on recupere les donnée dans la liste 
-            AddressDTO addressResult ;
+            AddressDTO addressResult;
             while (resultat.next()) {
                 addressResult = new AddressDTO();
-                
+
                 addressResult.setNom(resultat.getString("nom"));// position 2 -> nom
                 addressResult.setPrenom(resultat.getString("prenom"));     // position 3 -> prenom
                 addressResult.setTelephoneMobile(Integer.parseInt(resultat.getString("telephone_mobile")));     // position 4 -> contact
                 addressResult.setMailPerso(resultat.getString("mail_perso"));     // position 5 -> mail
+                addressResult.setVille(resultat.getString("ville"));
+                addressResult.setCodePostal(Integer.parseInt(resultat.getString("code_postal")));
                 
+
                 // je remplis ma collection avec la méthode add.
                 addressDTOList.add(addressResult);
             }
             DBUtil.deconnexion();
-            
+
         } catch (SQLException ex) {
             // TODO exception si enregistrement non trouve
             Logger.getLogger(InterfaceCarnet.class.getName()).log(Level.SEVERE, null, ex);

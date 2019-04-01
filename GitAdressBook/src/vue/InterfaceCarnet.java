@@ -208,9 +208,24 @@ public class InterfaceCarnet extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Dialog", 0, 12)); // NOI18N
         jLabel13.setText("Société");
 
+        buttonGroup1.add(boutonCiviliteMonsieur);
         boutonCiviliteMonsieur.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 boutonCiviliteMonsieurActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(boutonCiviliteMadame);
+        boutonCiviliteMadame.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boutonCiviliteMadameActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(boutonCiviliteSociete);
+        boutonCiviliteSociete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                boutonCiviliteSocieteActionPerformed(evt);
             }
         });
 
@@ -232,7 +247,7 @@ public class InterfaceCarnet extends javax.swing.JFrame {
             }
         });
 
-        jButton4.setText("Recherche");
+        jButton4.setText("Rechercher");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton4ActionPerformed(evt);
@@ -533,7 +548,15 @@ public class InterfaceCarnet extends javax.swing.JFrame {
         Address address = new Address();
 
         // on recupere les champs de la vue dans l'objet address
-        address.setCivilite("M.");
+        if (boutonCiviliteMonsieur.isSelected()) {
+            address.setCivilite("M.");
+        } else if (boutonCiviliteMadame.isSelected()) {
+            address.setCivilite("Mme");
+        } else if (boutonCiviliteSociete.isSelected()) {
+            address.setCivilite("Société");
+        } else {
+            address.setCivilite(null);
+        }
         address.setNom(txtNom.getText());
         address.setPrenom(txtPrenom.getText());
         address.setAppartbat(txtAppartBat.getText());
@@ -590,13 +613,15 @@ public class InterfaceCarnet extends javax.swing.JFrame {
             DefaultTableModel model = new DefaultTableModel();
             model.addColumn("Nom");
             model.addColumn("Prénom");
-            // TODO voie ville
+            model.addColumn("Code postal");
+            model.addColumn("Ville");
 
+            // TODO voie ville
             String req;
-            for (Address addresse
+            for (Address adresse
                     : addresses) {
                 model.addRow(new Object[]{
-                    addresse.getNom(), addresse.getPrenom()});
+                    adresse.getNom(), adresse.getPrenom(), adresse.getCodePostal(), adresse.getVille()});
 
             }
 
@@ -606,7 +631,7 @@ public class InterfaceCarnet extends javax.swing.JFrame {
             raz_zones();
 
             // popup réussite
-    //        JOptionPane.showMessageDialog(this, "Recherche");
+            //        JOptionPane.showMessageDialog(this, "Recherche");
         } else {
             // TODO : liste vide : aucune selection
             // TODO;popup 
@@ -675,6 +700,14 @@ public class InterfaceCarnet extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    private void boutonCiviliteMadameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutonCiviliteMadameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boutonCiviliteMadameActionPerformed
+
+    private void boutonCiviliteSocieteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutonCiviliteSocieteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_boutonCiviliteSocieteActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton boutonCiviliteMadame;
     private javax.swing.JRadioButton boutonCiviliteMonsieur;
@@ -730,6 +763,18 @@ public class InterfaceCarnet extends javax.swing.JFrame {
         txtPrenom.setText("");
         intTelMobile.setText("");
         txtMailPerso.setText("");
+        txtAppartBat.setText("");
+        txtComplementNumeroVoie.setText("");
+        txtLibelleVoie.setText("");
+        txtMailPro.setText("");
+        txtVille.setText("");
+        intCodePostal.setText("");
+        intNumeroVoie.setText("");
+        intTelFixe.setText("");
+        boutonCiviliteMonsieur = new javax.swing.JRadioButton("boutonCiviliteMonsieur",false);
+        boutonCiviliteMadame = new javax.swing.JRadioButton("boutonCiviliteMadame",false);
+        boutonCiviliteSociete = new javax.swing.JRadioButton("boutonCiviliteSociete", false);
+
         //TODO
     }
 }
