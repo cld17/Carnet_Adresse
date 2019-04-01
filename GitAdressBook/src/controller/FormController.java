@@ -25,7 +25,7 @@ import java.util.List;
  */
 public class FormController {
 
-    // type = nom de l'interface (pas l'implementation.
+    // type = nom de l'interRetrieveface (pas l'implementation.
     // si l'implementation change on a pas à le modifier
     private final AddressDAO addressDAO;
 
@@ -67,6 +67,7 @@ public class FormController {
     public CustomResponse retrieveAddress(Address address) {
         // création objet reponse
         CustomResponse customResponse = new CustomResponse();
+       
         List<Address> resultat = new ArrayList<>();
 
         try {
@@ -75,7 +76,9 @@ public class FormController {
             AddressDTO addressDTO = Builder.buildAddressDTO(address);
 
             // Récupération liste
+            
             List<AddressDTO> addressDTOList = addressDAO.retrieveAddress(addressDTO);
+            System.out.println("controller " + addressDTOList);
 
 
             resultat.addAll(Builder.buildAddresses(addressDTOList));
@@ -95,10 +98,51 @@ public class FormController {
     }
 
     //
-//        addressDAO.retrieveAddress(addressDTO);
-    //
-    public CustomResponse deleteAddress(Address address) {
-        return null;
+    
+     public CustomResponse deleteAddress(Address address) {
+        // création objet reponse
+        CustomResponse customResponse = new CustomResponse();
+
+        try {
+         
+            AddressDTO addressDTO = Builder.buildAddressDTO(address);
+
+            addressDAO.deleteAddress(addressDTO);
+       
+        } catch (AddressException e) {
+            customResponse.setResponseCode(FormatErrorEnum.DATABASE_ERROR);
+            customResponse.setErrorMessage(e.getMessage());
+            return customResponse;
+        }
+
+        customResponse.setResponseCode(FormatErrorEnum.SUCCESS);
+
+        return customResponse;
+    }
+
+    public CustomResponse updateAddress(Address address) {// création objet reponse
+        CustomResponse customResponse = new CustomResponse();
+
+        try {
+            AddressValidator.validate(address);
+
+            AddressDTO addressDTO = Builder.buildAddressDTO(address);
+
+            addressDAO.updateAddress(addressDTO);
+
+        } catch (AddressValidatorException e) {
+            customResponse.setResponseCode(e.getErrorCode());
+            customResponse.setErrorMessage(e.getMessage());
+            return customResponse;
+        } catch (AddressException e) {
+            customResponse.setResponseCode(FormatErrorEnum.DATABASE_ERROR);
+            customResponse.setErrorMessage(e.getMessage());
+            return customResponse;
+        }
+
+        customResponse.setResponseCode(FormatErrorEnum.SUCCESS);
+
+        return customResponse;
     }
 
 }

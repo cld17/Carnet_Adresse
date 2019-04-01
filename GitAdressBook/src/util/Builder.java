@@ -12,6 +12,7 @@ public class Builder {
     public static AddressDTO buildAddressDTO(Address address) {
         AddressDTO addressDTO = new AddressDTO();
 
+        addressDTO.setId(address.getId() != null && !address.getId().isEmpty() ? Integer.parseInt(address.getId()) : null);
         addressDTO.setCivilite(address.getCivilite());
         addressDTO.setNom(address.getNom());
         addressDTO.setPrenom(address.getPrenom());
@@ -19,10 +20,10 @@ public class Builder {
         addressDTO.setNumeroVoie(address.getNumeroVoie() != null && !address.getNumeroVoie().isEmpty() ? Integer.parseInt(address.getNumeroVoie()) : null);
         addressDTO.setComplementNumeroVoie(address.getComplementNumeroVoie());
         addressDTO.setLibelleVoie(address.getLibelleVoie());
-        addressDTO.setCodePostal( address.getCodePostal() != null && !address.getCodePostal().isEmpty() ? Integer.parseInt(address.getCodePostal()) : null);
+        addressDTO.setCodePostal(address.getCodePostal() != null && !address.getCodePostal().isEmpty() ? Integer.parseInt(address.getCodePostal()) : null);
         addressDTO.setVille(address.getVille());
-        addressDTO.setTelephoneMobile(address.getTelephoneMobile() != null && !address.getTelephoneMobile().isEmpty()? Integer.parseInt(address.getTelephoneMobile()) : null);
-        addressDTO.setTelephoneFixe(address.getTelephoneFixe() != null && !address.getTelephoneFixe().isEmpty()? Integer.parseInt(address.getTelephoneFixe()) : null);
+        addressDTO.setTelephoneMobile(address.getTelephoneMobile() != null && !address.getTelephoneMobile().isEmpty() ? Integer.parseInt(address.getTelephoneMobile()) : null);
+        addressDTO.setTelephoneFixe(address.getTelephoneFixe() != null && !address.getTelephoneFixe().isEmpty() ? Integer.parseInt(address.getTelephoneFixe()) : null);
         addressDTO.setMailPerso(address.getMailPerso());
         addressDTO.setMailPro(address.getMailPro());
 
@@ -32,6 +33,7 @@ public class Builder {
     public static Address buildAddress(AddressDTO addressDTO) {
         Address address = new Address();
 
+        address.setId(addressDTO.getId() != null ? addressDTO.getId().toString() : null);
         address.setCivilite(addressDTO.getCivilite());
         address.setNom(addressDTO.getNom());
         address.setPrenom(addressDTO.getPrenom());
@@ -39,10 +41,10 @@ public class Builder {
         address.setNumeroVoie(addressDTO.getNumeroVoie() != null ? addressDTO.getNumeroVoie().toString() : null);
         address.setComplementNumeroVoie(addressDTO.getComplementNumeroVoie());
         address.setLibelleVoie(addressDTO.getLibelleVoie());
-        address.setCodePostal(addressDTO.getCodePostal() !=null ? addressDTO.getCodePostal().toString(): null);
+        address.setCodePostal(addressDTO.getCodePostal() != null ? addressDTO.getCodePostal().toString() : null);
         address.setVille(addressDTO.getVille());
         address.setTelephoneMobile(addressDTO.getTelephoneMobile() != null ? addressDTO.getTelephoneMobile().toString() : null);
-        address.setTelephoneFixe(addressDTO.getTelephoneFixe() != null ? addressDTO.getTelephoneFixe().toString(): null);
+        address.setTelephoneFixe(addressDTO.getTelephoneFixe() != null ? addressDTO.getTelephoneFixe().toString() : null);
         address.setMailPerso(addressDTO.getMailPerso());
         address.setMailPro(addressDTO.getMailPro());
 
@@ -55,10 +57,10 @@ public class Builder {
 //                resultat.add(Builder.buildAddress(addressDTOList.get(i)));
 //            }
         // ==
-            for (AddressDTO a :
-                    addressDTOList) {
-                resultat.add(Builder.buildAddress(a));
-            }
+        for (AddressDTO a
+                : addressDTOList) {
+            resultat.add(Builder.buildAddress(a));
+        }
 // ==
 //            addressDTOList.stream().map(addressDTO1 -> Builder.buildAddress(addressDTO1)).collect(Collectors.toList());
         // ==
@@ -67,6 +69,6 @@ public class Builder {
 //            Address address = Builder.buildAddress(addressDTO1);
 //            return address;
 //        }).collect(Collectors.toList());
-return resultat;
+        return resultat;
     }
 }
