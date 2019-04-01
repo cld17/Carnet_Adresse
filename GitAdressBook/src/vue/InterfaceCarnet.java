@@ -93,6 +93,7 @@ public class InterfaceCarnet extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
+        hiddenButton = new javax.swing.JRadioButton();
 
         jButton1.setText("jButton1");
 
@@ -299,6 +300,18 @@ public class InterfaceCarnet extends javax.swing.JFrame {
 
         jLabel16.setText("Mail professionnel");
 
+        hiddenButton.setBackground(new java.awt.Color(255, 255, 255));
+        buttonGroup1.add(hiddenButton);
+        hiddenButton.setSelected(true);
+        hiddenButton.setMaximumSize(new java.awt.Dimension(0, 0));
+        hiddenButton.setMinimumSize(new java.awt.Dimension(0, 0));
+        hiddenButton.setPreferredSize(new java.awt.Dimension(0, 0));
+        hiddenButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hiddenButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -373,6 +386,8 @@ public class InterfaceCarnet extends javax.swing.JFrame {
                         .addComponent(boutonCiviliteSociete)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel13)
+                        .addGap(40, 40, 40)
+                        .addComponent(hiddenButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -387,7 +402,7 @@ public class InterfaceCarnet extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(27, 27, 27)
+                .addGap(25, 25, 25)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(boutonCiviliteMadame, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -395,7 +410,8 @@ public class InterfaceCarnet extends javax.swing.JFrame {
                         .addComponent(boutonCiviliteMonsieur, javax.swing.GroupLayout.Alignment.TRAILING)
                         .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING))
                     .addComponent(jLabel12)
-                    .addComponent(jLabel13))
+                    .addComponent(jLabel13)
+                    .addComponent(hiddenButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtNom, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -453,7 +469,7 @@ public class InterfaceCarnet extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnenr)
                     .addComponent(jButton5))
-                .addContainerGap(102, Short.MAX_VALUE))
+                .addContainerGap(104, Short.MAX_VALUE))
         );
 
         jScrollPane3.setViewportView(jPanel1);
@@ -708,6 +724,10 @@ public class InterfaceCarnet extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_boutonCiviliteSocieteActionPerformed
 
+    private void hiddenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hiddenButtonActionPerformed
+        hiddenButton.setVisible(false);
+    }//GEN-LAST:event_hiddenButtonActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton boutonCiviliteMadame;
     private javax.swing.JRadioButton boutonCiviliteMonsieur;
@@ -715,6 +735,7 @@ public class InterfaceCarnet extends javax.swing.JFrame {
     private javax.swing.JButton btnan;
     private javax.swing.JButton btnenr;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JRadioButton hiddenButton;
     private javax.swing.JTextField intCodePostal;
     private javax.swing.JTextField intNumeroVoie;
     private javax.swing.JTextField intTelFixe;
@@ -771,9 +792,7 @@ public class InterfaceCarnet extends javax.swing.JFrame {
         intCodePostal.setText("");
         intNumeroVoie.setText("");
         intTelFixe.setText("");
-        boutonCiviliteMonsieur = new javax.swing.JRadioButton("boutonCiviliteMonsieur",false);
-        boutonCiviliteMadame = new javax.swing.JRadioButton("boutonCiviliteMadame",false);
-        boutonCiviliteSociete = new javax.swing.JRadioButton("boutonCiviliteSociete", false);
+        hiddenButton.setSelected(true);
 
         //TODO
     }

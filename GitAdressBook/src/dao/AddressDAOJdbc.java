@@ -64,40 +64,32 @@ public class AddressDAOJdbc implements AddressDAO {
         // TODO
 
         String select = "SELECT * FROM carnet ";
-        String where = "WHERE ";
-        Integer compteurAnd = 0;
+        String where = "WHERE 1 ";
+
         if (addressDTO.getNom() != null) {
-            where += "nom = '" + addressDTO.getNom() + "' ";
-            compteurAnd++;
+            where += "AND nom = '" + addressDTO.getNom() + "' ";
+
         }
         if (addressDTO.getLibelleVoie() != null) {
-            if (compteurAnd == 1) {
-                where += " AND ";
-                compteurAnd = 0;
-            }
-            where += "libelle_voie LIKE ('%" + addressDTO.getLibelleVoie() + "%') ";
-            compteurAnd++;
+
+            where += "AND libelle_voie LIKE ('%" + addressDTO.getLibelleVoie() + "%') ";
+
         }
         if (addressDTO.getCodePostal() != null) {
-            if (compteurAnd == 1) {
-                where += " AND ";
-                compteurAnd = 0;
-            }
-            where += "code_postal LIKE ('%" + addressDTO.getCodePostal() + "%') ";
-            compteurAnd++;
+
+            where += "AND code_postal LIKE ('%" + addressDTO.getCodePostal() + "%') ";
+
         }
         if (addressDTO.getVille() != null) {
-            if (compteurAnd == 1) {
-                where += " AND ";
-            }
-            where += "ville LIKE ('%" + addressDTO.getVille() + "%') ";
+
+            where += "AND ville LIKE ('%" + addressDTO.getVille() + "%') ";
         }
+
         // TODO ...
-        String order = "ORDER BY nom";
+        String order = "ORDER BY `nom`";
 
         req = select + where + order;
         System.out.println(req);
-        
 
         // création liste pour récuperer enregistrement base
         List<AddressDTO> addressDTOList = new ArrayList();
@@ -128,7 +120,6 @@ public class AddressDAOJdbc implements AddressDAO {
                 addressResult.setMailPerso(resultat.getString("mail_perso"));     // position 5 -> mail
                 addressResult.setVille(resultat.getString("ville"));
                 addressResult.setCodePostal(Integer.parseInt(resultat.getString("code_postal")));
-                
 
                 // je remplis ma collection avec la méthode add.
                 addressDTOList.add(addressResult);
