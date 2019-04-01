@@ -120,4 +120,29 @@ public class FormController {
         return customResponse;
     }
 
+    public CustomResponse updateAddress(Address address) {// création objet reponse
+        CustomResponse customResponse = new CustomResponse();
+
+        try {
+            AddressValidator.validate(address);
+
+            AddressDTO addressDTO = Builder.buildAddressDTO(address);
+
+            addressDAO.updateAddress(addressDTO);
+
+        } catch (AddressValidatorException e) {
+            customResponse.setResponseCode(e.getErrorCode());
+            customResponse.setErrorMessage(e.getMessage());
+            return customResponse;
+        } catch (AddressException e) {
+            customResponse.setResponseCode(FormatErrorEnum.DATABASE_ERROR);
+            customResponse.setErrorMessage(e.getMessage());
+            return customResponse;
+        }
+
+        customResponse.setResponseCode(FormatErrorEnum.SUCCESS);
+
+        return customResponse;
+    }
+
 }
