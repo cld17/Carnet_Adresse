@@ -65,6 +65,11 @@ public class AddressDAOJdbc implements AddressDAO {
 
         String select = "SELECT * FROM carnet ";
         String where = "WHERE 1 ";
+        
+         if (addressDTO.getId() != null) {
+            where += "AND id = '" + addressDTO.getId() + "' ";
+
+        }
 
         if (addressDTO.getNom() != null) {
             where += "AND nom = '" + addressDTO.getNom() + "' ";
@@ -114,10 +119,13 @@ public class AddressDAOJdbc implements AddressDAO {
             while (resultat.next()) {
                 addressResult = new AddressDTO();
 
-                addressResult.setNom(resultat.getString("nom"));// position 2 -> nom
-                addressResult.setPrenom(resultat.getString("prenom"));     // position 3 -> prenom
-                addressResult.setTelephoneMobile(Integer.parseInt(resultat.getString("telephone_mobile")));     // position 4 -> contact
-                addressResult.setMailPerso(resultat.getString("mail_perso"));     // position 5 -> mail
+                addressResult.setId(Integer.parseInt(resultat.getString("Id")));
+               
+                System.out.println("adresse_result :" + resultat.getString("Id"));
+                addressResult.setNom(resultat.getString("nom"));//  
+                addressResult.setPrenom(resultat.getString("prenom"));
+                addressResult.setTelephoneMobile(Integer.parseInt(resultat.getString("telephone_mobile")));
+                addressResult.setMailPerso(resultat.getString("mail_perso"));
                 addressResult.setVille(resultat.getString("ville"));
                 addressResult.setCodePostal(Integer.parseInt(resultat.getString("code_postal")));
 
@@ -133,4 +141,39 @@ public class AddressDAOJdbc implements AddressDAO {
 
         return addressDTOList;
     }
+    
+    
+    @Override
+    public Object deleteAddress(AddressDTO addressDTO) throws AddressException {
+       String req;
+        // prepare notre sql de création
+
+        req = "DELETE FROM carnet WHERE id = ?";
+        try {
+            // ouverture connexion            
+            Connection connexion = DBUtil.connexion();
+
+            // préparation requete
+            PreparedStatement ps = connexion.prepareStatement(req);
+
+            // preparation des valeurs a transmettre dans ma requette
+            ps.setInt(1, addressDTO.getId());
+           
+            // execution de ma requetes préparées
+            int res = ps.executeUpdate();
+
+            DBUtil.deconnexion();
+
+        } catch (SQLException ex) {
+            throw new AddressException(ex);
+        }
+        return null;
+    }
+    
+     @Override
+    public Object updateAddress(AddressDTO addressDTO)  {
+        return null;
+    }
+    
+   
 }

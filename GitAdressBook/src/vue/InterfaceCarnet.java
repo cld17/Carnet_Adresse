@@ -1,6 +1,7 @@
 package vue;
 
 import controller.FormController;
+import java.awt.GridLayout;
 import model.Address;
 import response.CustomResponse;
 import response.FormatErrorEnum;
@@ -10,6 +11,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -25,6 +27,7 @@ import java.util.logging.Logger;
 public class InterfaceCarnet extends javax.swing.JFrame {
 
     private FormController controller;
+    private List<Address> addresses = new ArrayList<>();
 
     /**
      * Creates new form Interface_Carnet
@@ -36,6 +39,7 @@ public class InterfaceCarnet extends javax.swing.JFrame {
 
         // création vue
         initComponents();
+        raz_zones();
     }
 
     /**
@@ -94,6 +98,7 @@ public class InterfaceCarnet extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         hiddenButton = new javax.swing.JRadioButton();
+        txtId = new javax.swing.JTextField();
 
         jButton1.setText("jButton1");
 
@@ -142,6 +147,11 @@ public class InterfaceCarnet extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable2MouseClicked(evt);
+            }
+        });
         jScrollPane4.setViewportView(jTable2);
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -312,6 +322,8 @@ public class InterfaceCarnet extends javax.swing.JFrame {
             }
         });
 
+        txtId.setText("id");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -374,6 +386,15 @@ public class InterfaceCarnet extends javax.swing.JFrame {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(txtComplementNumeroVoie)))
                         .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnenr, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
+                            .addComponent(btnan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(boutonCiviliteMonsieur)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -386,18 +407,15 @@ public class InterfaceCarnet extends javax.swing.JFrame {
                         .addComponent(boutonCiviliteSociete)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel13)
-                        .addGap(40, 40, 40)
-                        .addComponent(hiddenButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(btnenr, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 229, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, 228, Short.MAX_VALUE)
-                            .addComponent(btnan, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addContainerGap())))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(40, 40, 40)
+                                .addComponent(hiddenButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(21, 21, 21))))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -411,7 +429,8 @@ public class InterfaceCarnet extends javax.swing.JFrame {
                         .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING))
                     .addComponent(jLabel12)
                     .addComponent(jLabel13)
-                    .addComponent(hiddenButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(hiddenButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtNom, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -573,6 +592,7 @@ public class InterfaceCarnet extends javax.swing.JFrame {
         } else {
             address.setCivilite(null);
         }
+
         address.setNom(txtNom.getText());
         address.setPrenom(txtPrenom.getText());
         address.setAppartbat(txtAppartBat.getText());
@@ -614,6 +634,7 @@ public class InterfaceCarnet extends javax.swing.JFrame {
         Address address = new Address();
 
         // on recupere les champs de la vue dans l'objet address 
+        address.setId(txtId.getText());
         address.setNom(txtNom.getText().isEmpty() ? null : txtNom.getText());
         address.setLibelleVoie(txtLibelleVoie.getText().isEmpty() ? null : txtLibelleVoie.getText());
         address.setCodePostal(intCodePostal.getText().isEmpty() ? null : intCodePostal.getText());
@@ -623,28 +644,57 @@ public class InterfaceCarnet extends javax.swing.JFrame {
         CustomResponse resultat = controller.retrieveAddress(address);
 
         if (resultat.getResponseCode().equals(FormatErrorEnum.SUCCESS)) {
-            List<Address> addresses = resultat.getAddresses();
+            addresses = resultat.getAddresses();
 
+           // affichage dans tableau
+           
             // Définition du modèle
             DefaultTableModel model = new DefaultTableModel();
+            model.addColumn("Id");
             model.addColumn("Nom");
             model.addColumn("Prénom");
             model.addColumn("Code postal");
             model.addColumn("Ville");
-
-            // TODO voie ville
-            String req;
             for (Address adresse
                     : addresses) {
                 model.addRow(new Object[]{
-                    adresse.getNom(), adresse.getPrenom(), adresse.getCodePostal(), adresse.getVille()});
-
+                    adresse.getId(), adresse.getNom(), adresse.getPrenom(), adresse.getCodePostal(), adresse.getVille()});
             }
-
             // on applique le model à la table
             jTable2.setModel(model);
             // RAZ de mes champs
-            raz_zones();
+
+            
+            
+            
+            // Affichage dans bouton
+            //String req;
+            //JFrame frame = new JFrame();
+            //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            // frame.setTitle("Fenetre de test");
+            // JPanel jPanelREPONSES = new JPanel();
+            // frame.add(jPanelREPONSES);
+            // jPanelREPONSES.setLayout(new GridLayout(0, 1));
+            // int h = 0;
+            //for (Address adresse
+            //        : addresses) {
+
+            //    model.addRow(new Object[]{
+            //        adresse.getNom(), adresse.getPrenom(), adresse.getCodePostal(), adresse.getVille()});
+
+            //    String nomResultat = adresse.getNom() + " " + adresse.getPrenom() + " (" + adresse.getCodePostal() + " " + adresse.getVille() + ")";
+            //    System.out.println(nomResultat);
+            //    JButton jButtonResultat = new javax.swing.JButton();
+            //    jButtonResultat.setText(nomResultat);
+            //    jPanelREPONSES.add(jButtonResultat);
+            //    jButtonResultat.setVisible(true);
+            //    h += 50;
+           // }
+           // frame.setSize(600, h);
+           // jPanelREPONSES.setVisible(true);
+           // frame.setVisible(true);
+
+           // raz_zones();
 
             // popup réussite
             //        JOptionPane.showMessageDialog(this, "Recherche");
@@ -697,23 +747,30 @@ public class InterfaceCarnet extends javax.swing.JFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {
 
     }
-
+// suppression enregistrement avec l'ID
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        String req;
-        req = "delete from carnet where nom =?";
-        try {
-            PreparedStatement ps = DBUtil.connexion().prepareStatement(req);
-            // TODO ps.setText(1, String(rechnom.getText()));
-            int count = ps.executeUpdate();
-            JOptionPane.showMessageDialog(this, count + " Donnée supprimer avec succés");
+        // création objet address contenant les champs de la vue
+        Address address = new Address();
 
-            // mise à blanc des zones de l'écran
+        address.setId(txtId.getText());
+
+        // je demande au controller de supprimer l'adresse en lui passant l'objet rempli et je stocke le resultat
+        CustomResponse resultat = controller.deleteAddress(address);
+
+        if (resultat.getResponseCode().equals(FormatErrorEnum.SUCCESS)) {
+            // RAZ de mes champs
             raz_zones();
 
-            DBUtil.deconnexion();
-        } catch (SQLException ex) {
-            Logger.getLogger(InterfaceCarnet.class.getName()).log(Level.SEVERE, null, ex);
+            // popup réussite
+            JOptionPane.showMessageDialog(this, "Contact supprimé avec succés.");
+        } else {
+            // TODO : mettre des champs en rouge
+            // TODO;popup 
+            resultat.getResponseCode();
+            resultat.getErrorMessage();
         }
+
+
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void boutonCiviliteMadameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_boutonCiviliteMadameActionPerformed
@@ -727,6 +784,14 @@ public class InterfaceCarnet extends javax.swing.JFrame {
     private void hiddenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hiddenButtonActionPerformed
         hiddenButton.setVisible(false);
     }//GEN-LAST:event_hiddenButtonActionPerformed
+
+    private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
+        addresses
+        
+        System.out.println();
+        int ligne = jTable2.rowAtPoint(evt.getPoint());
+        jTable2.getModel().getValueAt(ligne, ICONIFIED);
+    }//GEN-LAST:event_jTable2MouseClicked
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JRadioButton boutonCiviliteMadame;
@@ -770,6 +835,7 @@ public class InterfaceCarnet extends javax.swing.JFrame {
     private javax.swing.JTable jTable2;
     private javax.swing.JTextField txtAppartBat;
     private javax.swing.JTextField txtComplementNumeroVoie;
+    private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtLibelleVoie;
     private javax.swing.JTextField txtMailPerso;
     private javax.swing.JTextField txtMailPro;
@@ -780,6 +846,7 @@ public class InterfaceCarnet extends javax.swing.JFrame {
 
     private void raz_zones() {
 
+        txtId.setText("");
         txtNom.setText("");
         txtPrenom.setText("");
         intTelMobile.setText("");
@@ -796,4 +863,5 @@ public class InterfaceCarnet extends javax.swing.JFrame {
 
         //TODO
     }
+     
 }
