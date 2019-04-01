@@ -72,5 +72,6 @@ public class AddressValidator {
         validationNom(address.getNom());
         validationNumeroVoie(address.getNumeroVoie());
         validationPrenom(address.getPrenom(), address.getCivilite());
+        // ajout methode pour chaque champs
     }
 }

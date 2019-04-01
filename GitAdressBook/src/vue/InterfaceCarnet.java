@@ -567,13 +567,14 @@ public class InterfaceCarnet extends javax.swing.JFrame {
     }//GEN-LAST:event_btnenrActionPerformed
     // supprimer /nom dans carnet
 
-    // recherche par nom
+    // recherche par nom / voie / ville
+    // TODO 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 
         // création objet address contenant le champs nom libelle voie cp ville
         Address address = new Address();
 
-        // on recupere les champs de la vue dans l'objet address
+        // on recupere les champs de la vue dans l'objet address 
         address.setNom(txtNom.getText().isEmpty() ? null : txtNom.getText());
         address.setLibelleVoie(txtLibelleVoie.getText().isEmpty() ? null : txtLibelleVoie.getText());
         address.setCodePostal(intCodePostal.getText().isEmpty() ? null : intCodePostal.getText());
@@ -589,6 +590,7 @@ public class InterfaceCarnet extends javax.swing.JFrame {
             DefaultTableModel model = new DefaultTableModel();
             model.addColumn("Nom");
             model.addColumn("Prénom");
+            // TODO voie ville
 
             String req;
             for (Address addresse
@@ -728,5 +730,6 @@ public class InterfaceCarnet extends javax.swing.JFrame {
         txtPrenom.setText("");
         intTelMobile.setText("");
         txtMailPerso.setText("");
+        //TODO
     }
 }

@@ -61,6 +61,8 @@ public class AddressDAOJdbc implements AddressDAO {
         String req;
         // préparation de la requete de sélection
         // construire ma requete if nom rempli etc.....
+        // TODO
+        
         String select = "SELECT * FROM carnet ";
         String where = "WHERE ";
         if(addressDTO.getNom() != null) {
@@ -102,6 +104,7 @@ public class AddressDAOJdbc implements AddressDAO {
                 addressResult.setTelephoneMobile(Integer.parseInt(resultat.getString("telephone_mobile")));     // position 4 -> contact
                 addressResult.setMailPerso(resultat.getString("mail_perso"));     // position 5 -> mail
                 
+                // je remplis ma collection avec la méthode add.
                 addressDTOList.add(addressResult);
             }
             DBUtil.deconnexion();
