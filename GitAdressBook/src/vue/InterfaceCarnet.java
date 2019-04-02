@@ -17,7 +17,6 @@ import java.util.stream.Collectors;
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  * @author stag
  */
@@ -290,11 +289,11 @@ public class InterfaceCarnet extends javax.swing.JFrame {
 
         jLabel4.setText("Appart/Bat");
 
-        jLabel5.setText("N° voie*");
+        jLabel5.setText("N° voie");
 
         jLabel6.setText("Complément");
 
-        jLabel7.setText("Libéllé adresse");
+        jLabel7.setText("Libelle adresse");
 
         jLabel8.setText("Code postal*");
 
@@ -341,6 +340,9 @@ public class InterfaceCarnet extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(btnUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -425,8 +427,7 @@ public class InterfaceCarnet extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(21, 21, 21))))
-                    .addComponent(btnUpdate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGap(21, 21, 21))))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -499,9 +500,9 @@ public class InterfaceCarnet extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnenr)
                     .addComponent(jButton5))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnUpdate)
-                .addContainerGap(61, Short.MAX_VALUE))
+                .addContainerGap(73, Short.MAX_VALUE))
         );
 
         jScrollPane3.setViewportView(jPanel1);
@@ -546,7 +547,6 @@ public class InterfaceCarnet extends javax.swing.JFrame {
     /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
      * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
      */
-
     /**
      * try { for (javax.swing.UIManager.LookAndFeelInfo info :
      * javax.swing.UIManager.getInstalledLookAndFeels()) { if
@@ -660,7 +660,6 @@ public class InterfaceCarnet extends javax.swing.JFrame {
             addresses = resultat.getAddresses();
 
             // affichage dans tableau
-
             // Définition du modèle
             DefaultTableModel model = new DefaultTableModel();
             model.addColumn("Id");
@@ -671,12 +670,11 @@ public class InterfaceCarnet extends javax.swing.JFrame {
             for (Address adresse
                     : addresses) {
                 model.addRow(new Object[]{
-                        adresse.getId(), adresse.getNom(), adresse.getPrenom(), adresse.getCodePostal(), adresse.getVille()});
+                    adresse.getId(), adresse.getNom(), adresse.getPrenom(), adresse.getCodePostal(), adresse.getVille()});
             }
             // on applique le model à la table
             jTable2.setModel(model);
             // RAZ de mes champs
-
 
             // Affichage dans bouton
             //String req;
@@ -689,10 +687,8 @@ public class InterfaceCarnet extends javax.swing.JFrame {
             // int h = 0;
             //for (Address adresse
             //        : addresses) {
-
             //    model.addRow(new Object[]{
             //        adresse.getNom(), adresse.getPrenom(), adresse.getCodePostal(), adresse.getVille()});
-
             //    String nomResultat = adresse.getNom() + " " + adresse.getPrenom() + " (" + adresse.getCodePostal() + " " + adresse.getVille() + ")";
             //    System.out.println(nomResultat);
             //    JButton jButtonResultat = new javax.swing.JButton();
@@ -704,9 +700,7 @@ public class InterfaceCarnet extends javax.swing.JFrame {
             // frame.setSize(600, h);
             // jPanelREPONSES.setVisible(true);
             // frame.setVisible(true);
-
             // raz_zones();
-
             // popup réussite
             //        JOptionPane.showMessageDialog(this, "Recherche");
         } else {
@@ -800,7 +794,6 @@ public class InterfaceCarnet extends javax.swing.JFrame {
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
         Map<String, Address> addresseMap = addresses.stream().collect(Collectors.toMap(Address::getId, adrs -> adrs));
 
-        System.out.println();
         int ligne = jTable2.rowAtPoint(evt.getPoint());
 //        addresses.get(ligne);
         String id = (String) jTable2.getModel().getValueAt(ligne, 0);
@@ -808,7 +801,7 @@ public class InterfaceCarnet extends javax.swing.JFrame {
         Address clickedAddress = addresseMap.get(id);
         txtId.setText(clickedAddress.getId());
         txtNom.setText(clickedAddress.getNom());
-         txtPrenom.setText(clickedAddress.getPrenom());
+        txtPrenom.setText(clickedAddress.getPrenom());
         intTelMobile.setText(clickedAddress.getTelephoneMobile());
         txtMailPerso.setText(clickedAddress.getMailPerso());
         txtAppartBat.setText(clickedAddress.getAppartbat());
@@ -819,14 +812,11 @@ public class InterfaceCarnet extends javax.swing.JFrame {
         intCodePostal.setText(clickedAddress.getCodePostal());
         intNumeroVoie.setText(clickedAddress.getNumeroVoie());
         intTelFixe.setText(clickedAddress.getTelephoneFixe());
-        hiddenButton.setSelected(true);       
-        // TODO
-        
-        
+        hiddenButton.setSelected(true);
 
 
     }//GEN-LAST:event_jTable2MouseClicked
-
+// mise a jour enregistrement
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // création objet address contenant les champs de la vue
         Address address = new Address();
@@ -945,8 +935,16 @@ public class InterfaceCarnet extends javax.swing.JFrame {
         intNumeroVoie.setText("");
         intTelFixe.setText("");
         hiddenButton.setSelected(true);
+        
+        // RAZ tableau recherche
+        DefaultTableModel model = new DefaultTableModel();
+        model.addColumn("Id");
+        model.addColumn("Nom");
+        model.addColumn("Prénom");
+        model.addColumn("Code postal");
+        model.addColumn("Ville");
+        jTable2.setModel(model);
 
-        //TODO
     }
 
 }
