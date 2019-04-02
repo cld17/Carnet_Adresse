@@ -280,9 +280,9 @@ public class InterfaceCarnet extends javax.swing.JFrame {
 
         jLabel7.setText("Libelle adresse");
 
-        jLabel8.setText("Code postal*");
+        jLabel8.setText("Code postal");
 
-        jLabel9.setText("Ville*");
+        jLabel9.setText("Ville");
 
         jLabel10.setText("Tel. mobile");
 
@@ -631,7 +631,7 @@ public class InterfaceCarnet extends javax.swing.JFrame {
         }
 
         address.setNom(txtNom.getText());
-        address.setPrenom(txtPrenom.getText());
+        address.setPrenom(txtPrenom.getText().isEmpty() ? null : txtPrenom.getText());
         address.setAppartbat(txtAppartBat.getText());
         address.setNumeroVoie(intNumeroVoie.getText());
         address.setComplementNumeroVoie(txtComplementNumeroVoie.getText());
@@ -642,9 +642,9 @@ public class InterfaceCarnet extends javax.swing.JFrame {
         address.setTelephoneFixe(intTelFixe.getText());
         //address.setMailPerso(txtMailPerso.getText());
         //address.setMailPro(txtMailPro.getText());
-        
-          address.setMailPerso(txtMailPerso.getText().isEmpty() ? null : txtMailPerso.getText());
-          address.setMailPro(txtMailPro.getText().isEmpty() ? null : txtMailPro.getText());
+
+        address.setMailPerso(txtMailPerso.getText().isEmpty() ? null : txtMailPerso.getText());
+        address.setMailPro(txtMailPro.getText().isEmpty() ? null : txtMailPro.getText());
 
         // je demande au controller de creer l'adresse en lui passant l'objet rempli et je stocke le resultat
         CustomResponse resultat = controller.createAddress(address);
@@ -838,7 +838,7 @@ public class InterfaceCarnet extends javax.swing.JFrame {
 
         address.setId(txtId.getText());
         address.setNom(txtNom.getText());
-        address.setPrenom(txtPrenom.getText());
+        address.setPrenom(txtPrenom.getText().isEmpty() ? null : txtPrenom.getText());
         address.setAppartbat(txtAppartBat.getText());
         address.setNumeroVoie(intNumeroVoie.getText());
         address.setComplementNumeroVoie(txtComplementNumeroVoie.getText());
@@ -858,7 +858,7 @@ public class InterfaceCarnet extends javax.swing.JFrame {
             raz_zones();
 
             // popup réussite
-            JOptionPane.showMessageDialog(this, "Contact mise a jour avec succés.");
+            JOptionPane.showMessageDialog(this, "Contact mis à jour avec succès.");
         } else {
             // TODO : mettre des champs en rouge
             // TODO;popup 

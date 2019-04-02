@@ -1,6 +1,7 @@
 package validator;
 
 import exception.AddressValidatorException;
+import javax.swing.JOptionPane;
 import model.Address;
 import response.FormatErrorEnum;
 
@@ -12,7 +13,7 @@ public class AddressValidator {
         if (nom != null && nom.trim().length() < 2) {
 
             // popup réussite
-            //    JOptionPane.showMessageDialog("Veuillez saisir un nom.");
+              JOptionPane.showMessageDialog(null,"Veuillez saisir un nom.");
             throw new AddressValidatorException("Le nom du contact doit contenir au moins 2 caractères.");
         }
     }
@@ -23,6 +24,7 @@ public class AddressValidator {
     private static void validationPrenom(String prenom, String boutonCivilite) throws AddressValidatorException {
         boolean cestunesociete = Boolean.parseBoolean(boutonCivilite);
         if (cestunesociete || prenom != null && prenom.trim().length() < 2) {
+            
 
             // popup réussite
             //    JOptionPane.showMessageDialog("Veuillez saisir un nom.");
