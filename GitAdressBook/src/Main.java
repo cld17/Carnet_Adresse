@@ -16,7 +16,6 @@ public class Main {
      */
     public static void main(String[] args) {
         // construit la vue
-
         InterfaceCarnet carnet = new InterfaceCarnet();
 
 
