@@ -72,7 +72,7 @@ public class AddressDAOJdbc implements AddressDAO {
         }
 
         if (addressDTO.getNom() != null) {
-            where += "AND nom = '" + addressDTO.getNom() + "' ";
+            where += "AND nom LIKE '" + addressDTO.getNom() + "%' ";
 
         }
         if (addressDTO.getLibelleVoie() != null) {
