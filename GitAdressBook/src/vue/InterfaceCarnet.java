@@ -682,6 +682,9 @@ public class InterfaceCarnet extends javax.swing.JFrame {
 
         // je demande au controller de faire le select sur le nom en lui passant l'objet rempli et je stocke le resultat
         CustomResponse resultat = controller.retrieveAddress(address);
+        if (txtNom.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Aucun nom d'entré. Vous avez la liste complète");
+        }
 
         if (resultat.getResponseCode().equals(FormatErrorEnum.SUCCESS)) {
             addresses = resultat.getAddresses();
