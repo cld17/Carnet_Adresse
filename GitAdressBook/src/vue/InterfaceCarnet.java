@@ -455,11 +455,12 @@ public class InterfaceCarnet extends javax.swing.JFrame {
                     .addComponent(txtAppartBat, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(intNumeroVoie, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtComplementNumeroVoie, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(intNumeroVoie, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtComplementNumeroVoie, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtLibelleVoie, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -537,12 +538,11 @@ public class InterfaceCarnet extends javax.swing.JFrame {
                         .addGap(26, 26, 26)
                         .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18))
+                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(381, 381, 381)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -640,8 +640,11 @@ public class InterfaceCarnet extends javax.swing.JFrame {
         address.setVille(txtVille.getText());
         address.setTelephoneMobile(intTelMobile.getText());
         address.setTelephoneFixe(intTelFixe.getText());
-        address.setMailPerso(txtMailPerso.getText());
-        address.setMailPro(txtMailPro.getText());
+        //address.setMailPerso(txtMailPerso.getText());
+        //address.setMailPro(txtMailPro.getText());
+        
+          address.setMailPerso(txtMailPerso.getText().isEmpty() ? null : txtMailPerso.getText());
+          address.setMailPro(txtMailPro.getText().isEmpty() ? null : txtMailPro.getText());
 
         // je demande au controller de creer l'adresse en lui passant l'objet rempli et je stocke le resultat
         CustomResponse resultat = controller.createAddress(address);
@@ -684,6 +687,9 @@ public class InterfaceCarnet extends javax.swing.JFrame {
             addresses = resultat.getAddresses();
 
             // affichage dans tableau
+            if (addresses.isEmpty()) {
+                JOptionPane.showMessageDialog(this, "Pas de contact avec les infos entrées.");
+            }
             // Définition du modèle
             DefaultTableModel model = new DefaultTableModel();
             model.addColumn("Id");
