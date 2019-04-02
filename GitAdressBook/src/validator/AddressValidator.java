@@ -61,17 +61,21 @@ public class AddressValidator {
                 String errorMessage = type.equals("pro") ? "Email professionel invalide." : "Email personnel invalide.";
                 throw new AddressValidatorException(errorMessage, FormatErrorEnum.EMAIL_ERROR);
             }
-        } else {
-            throw new AddressValidatorException("Merci de saisir une adresse mail.", FormatErrorEnum.EMAIL_ERROR);
-        }
+        } //else {
+            
+                 //throw new AddressValidatorException("Merci de saisir une adresse mail.", FormatErrorEnum.EMAIL_ERROR);
+    //}
     }
 
     public static void validate(Address address) throws AddressValidatorException {
-      //  validationEmail(address.getMailPerso(), "perso");
-      //  validationEmail(address.getMailPro(), "pro");
+        validationEmail(address.getMailPerso(), "perso");
+     //   validationEmail(address.getMailPro(), "pro");
         validationNom(address.getNom());
        // validationNumeroVoie(address.getNumeroVoie());
         validationPrenom(address.getPrenom(), address.getCivilite());
+        // TODO
         // ajout methode pour chaque champs
+        // Code Postal
+        // Nom
     }
 }
