@@ -38,19 +38,19 @@ public class AddressValidator {
      *
      * @param intNumeroVoie
      */
-    private static void validationNumeroVoie(String intNumeroVoie) throws AddressValidatorException {
-        try {
-            Integer.parseInt(intNumeroVoie);
-        } catch (NumberFormatException e) {
-            throw new AddressValidatorException("Le numéro de la voie doit être numérique.", e);
+   // private static void validationNumeroVoie(String intNumeroVoie) throws AddressValidatorException {
+   //     try {
+  //          Integer.parseInt(intNumeroVoie);
+  //      } catch (NumberFormatException e) {
+  //          throw new AddressValidatorException("Le numéro de la voie doit être numérique.", e);
 
-        }
+    //    }
         //  if (intNumeroVoie != null || int intNumeroVoie entier = Integer.parseInt(intNumeroVoie)) {
 
         //
         //    JOptionPane.showMessageDialog("Veuillez saisir un nom.");
         // }
-    }
+  //  }
 
     /**
      * Valide l'adresse mail saisie.
@@ -67,10 +67,10 @@ public class AddressValidator {
     }
 
     public static void validate(Address address) throws AddressValidatorException {
-        validationEmail(address.getMailPerso(), "perso");
-        validationEmail(address.getMailPro(), "pro");
+      //  validationEmail(address.getMailPerso(), "perso");
+      //  validationEmail(address.getMailPro(), "pro");
         validationNom(address.getNom());
-        validationNumeroVoie(address.getNumeroVoie());
+       // validationNumeroVoie(address.getNumeroVoie());
         validationPrenom(address.getPrenom(), address.getCivilite());
         // ajout methode pour chaque champs
     }

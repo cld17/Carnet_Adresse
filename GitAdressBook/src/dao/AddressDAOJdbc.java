@@ -34,13 +34,13 @@ public class AddressDAOJdbc implements AddressDAO {
             ps.setString(2, addressDTO.getNom());
             ps.setString(3, addressDTO.getPrenom());
             ps.setString(4, addressDTO.getAppartbat());
-            ps.setInt(5, addressDTO.getNumeroVoie());
+            ps.setString(5, addressDTO.getNumeroVoie());
             ps.setString(6, addressDTO.getComplementNumeroVoie());
             ps.setString(7, addressDTO.getLibelleVoie());
-            ps.setInt(8, addressDTO.getCodePostal());
+            ps.setString(8, addressDTO.getCodePostal());
             ps.setString(9, addressDTO.getVille());
-            ps.setInt(10, addressDTO.getTelephoneMobile());
-            ps.setInt(11, addressDTO.getTelephoneFixe());
+            ps.setString(10, addressDTO.getTelephoneMobile());
+            ps.setString(11, addressDTO.getTelephoneFixe());
             ps.setString(12, addressDTO.getMailPerso());
             ps.setString(13, addressDTO.getMailPro());
 
@@ -120,14 +120,22 @@ public class AddressDAOJdbc implements AddressDAO {
                 addressResult = new AddressDTO();
 
                 addressResult.setId(Integer.parseInt(resultat.getString("Id")));
-
-                System.out.println("adresse_result :" + resultat.getString("Id"));
                 addressResult.setNom(resultat.getString("nom"));//  
                 addressResult.setPrenom(resultat.getString("prenom"));
-                addressResult.setTelephoneMobile(Integer.parseInt(resultat.getString("telephone_mobile")));
-                addressResult.setMailPerso(resultat.getString("mail_perso"));
+                addressResult.setAppartbat(resultat.getString("appart_bat"));
+                addressResult.setNumeroVoie(resultat.getString("numero_voie"));
+                // addressResult.setNumeroVoie(Integer.parseInt(resultat.getString("numero_voie")));
+                addressResult.setComplementNumeroVoie(resultat.getString("complement_numero_voie"));
+                addressResult.setLibelleVoie(resultat.getString("libelle_voie"));
+                addressResult.setCodePostal(resultat.getString("code_postal"));
+                //addressResult.setCodePostal(Integer.parseInt(resultat.getString("code_postal")));
                 addressResult.setVille(resultat.getString("ville"));
-                addressResult.setCodePostal(Integer.parseInt(resultat.getString("code_postal")));
+                addressResult.setTelephoneMobile(resultat.getString("telephone_mobile"));
+                // addressResult.setTelephoneMobile(Integer.parseInt(resultat.getString("telephone_mobile")));
+                addressResult.setTelephoneFixe(resultat.getString("telephone_fixe"));
+                //addressResult.setTelephoneFixe(Integer.parseInt(resultat.getString("telephone_fixe")));
+                addressResult.setMailPerso(resultat.getString("mail_perso"));
+                addressResult.setMailPro(resultat.getString("mail_pro"));
 
                 // je remplis ma collection avec la méthode add.
                 addressDTOList.add(addressResult);
@@ -141,7 +149,6 @@ public class AddressDAOJdbc implements AddressDAO {
 
         return addressDTOList;
     }
-
 
     @Override
     public Object deleteAddress(AddressDTO addressDTO) throws AddressException {
@@ -176,27 +183,29 @@ public class AddressDAOJdbc implements AddressDAO {
         Integer res;
         // prepare notre sql de création
 
-        req = "UPDATE carnet SET (`civilite`,`nom`,`prenom`,`appart_bat`,`numero_voie`,`complement_numero_voie`,`libelle_voie`,`code_postal`,`ville`,`telephone_mobile`,`telephone_fixe`,`mail_perso`,`mail_pro`) " +
-                "values (?,?,?,?,?,?,?,?,?,?,?,?,?) WHERE id = ?";
+        req = "UPDATE carnet SET civilite = ? , nom = ? , prenom = ? , appart_bat = ? , numero_voie = ? , complement_numero_voie = ? , libelle_voie = ? , code_postal = ? , ville = ? , telephone_mobile = ? , telephone_fixe = ? , mail_perso = ? , mail_pro = ? WHERE id = ?";
+
+        System.out.println(req);
         try {
             // ouverture connexion
             Connection connexion = DBUtil.connexion();
 
             // préparation requete
             PreparedStatement ps = connexion.prepareStatement(req);
+            System.out.println(ps);
 
             // preparation des valeurs a transmettre dans ma requette
             ps.setString(1, addressDTO.getCivilite());
             ps.setString(2, addressDTO.getNom());
             ps.setString(3, addressDTO.getPrenom());
             ps.setString(4, addressDTO.getAppartbat());
-            ps.setInt(5, addressDTO.getNumeroVoie());
+            ps.setString(5, addressDTO.getNumeroVoie());
             ps.setString(6, addressDTO.getComplementNumeroVoie());
             ps.setString(7, addressDTO.getLibelleVoie());
-            ps.setInt(8, addressDTO.getCodePostal());
+            ps.setString(8, addressDTO.getCodePostal());
             ps.setString(9, addressDTO.getVille());
-            ps.setInt(10, addressDTO.getTelephoneMobile());
-            ps.setInt(11, addressDTO.getTelephoneFixe());
+            ps.setString(10, addressDTO.getTelephoneMobile());
+            ps.setString(11, addressDTO.getTelephoneFixe());
             ps.setString(12, addressDTO.getMailPerso());
             ps.setString(13, addressDTO.getMailPro());
             ps.setInt(14, addressDTO.getId());
@@ -212,6 +221,5 @@ public class AddressDAOJdbc implements AddressDAO {
         }
         return res;
     }
-
 
 }

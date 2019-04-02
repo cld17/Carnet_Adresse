@@ -17,13 +17,17 @@ public class Builder {
         addressDTO.setNom(address.getNom());
         addressDTO.setPrenom(address.getPrenom());
         addressDTO.setAppartbat(address.getAppartbat());
-        addressDTO.setNumeroVoie(address.getNumeroVoie() != null && !address.getNumeroVoie().isEmpty() ? Integer.parseInt(address.getNumeroVoie()) : null);
+        // addressDTO.setNumeroVoie(address.getNumeroVoie() != null && !address.getNumeroVoie().isEmpty() ? Integer.parseInt(address.getNumeroVoie()) : null);
+        addressDTO.setNumeroVoie(address.getNumeroVoie());
         addressDTO.setComplementNumeroVoie(address.getComplementNumeroVoie());
         addressDTO.setLibelleVoie(address.getLibelleVoie());
-        addressDTO.setCodePostal(address.getCodePostal() != null && !address.getCodePostal().isEmpty() ? Integer.parseInt(address.getCodePostal()) : null);
+        // addressDTO.setCodePostal(address.getCodePostal() != null && !address.getCodePostal().isEmpty() ? Integer.parseInt(address.getCodePostal()) : null);
+        addressDTO.setCodePostal(address.getCodePostal());
         addressDTO.setVille(address.getVille());
-        addressDTO.setTelephoneMobile(address.getTelephoneMobile() != null && !address.getTelephoneMobile().isEmpty() ? Integer.parseInt(address.getTelephoneMobile()) : null);
-        addressDTO.setTelephoneFixe(address.getTelephoneFixe() != null && !address.getTelephoneFixe().isEmpty() ? Integer.parseInt(address.getTelephoneFixe()) : null);
+        addressDTO.setTelephoneMobile(address.getTelephoneMobile());
+        addressDTO.setTelephoneFixe(address.getTelephoneFixe());
+      //  addressDTO.setTelephoneMobile(address.getTelephoneMobile() != null && !address.getTelephoneMobile().isEmpty() ? Integer.parseInt(address.getTelephoneMobile()) : null);
+      //  addressDTO.setTelephoneFixe(address.getTelephoneFixe() != null && !address.getTelephoneFixe().isEmpty() ? Integer.parseInt(address.getTelephoneFixe()) : null);
         addressDTO.setMailPerso(address.getMailPerso());
         addressDTO.setMailPro(address.getMailPro());
 
