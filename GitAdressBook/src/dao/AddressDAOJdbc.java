@@ -120,20 +120,17 @@ public class AddressDAOJdbc implements AddressDAO {
                 addressResult = new AddressDTO();
 
                 addressResult.setId(Integer.parseInt(resultat.getString("Id")));
+                addressResult.setCivilite(resultat.getString("civilite"));
                 addressResult.setNom(resultat.getString("nom"));//  
                 addressResult.setPrenom(resultat.getString("prenom"));
                 addressResult.setAppartbat(resultat.getString("appart_bat"));
                 addressResult.setNumeroVoie(resultat.getString("numero_voie"));
-                // addressResult.setNumeroVoie(Integer.parseInt(resultat.getString("numero_voie")));
                 addressResult.setComplementNumeroVoie(resultat.getString("complement_numero_voie"));
                 addressResult.setLibelleVoie(resultat.getString("libelle_voie"));
                 addressResult.setCodePostal(resultat.getString("code_postal"));
-                //addressResult.setCodePostal(Integer.parseInt(resultat.getString("code_postal")));
                 addressResult.setVille(resultat.getString("ville"));
                 addressResult.setTelephoneMobile(resultat.getString("telephone_mobile"));
-                // addressResult.setTelephoneMobile(Integer.parseInt(resultat.getString("telephone_mobile")));
                 addressResult.setTelephoneFixe(resultat.getString("telephone_fixe"));
-                //addressResult.setTelephoneFixe(Integer.parseInt(resultat.getString("telephone_fixe")));
                 addressResult.setMailPerso(resultat.getString("mail_perso"));
                 addressResult.setMailPro(resultat.getString("mail_pro"));
 
