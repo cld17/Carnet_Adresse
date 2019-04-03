@@ -1,3 +1,8 @@
+/*
+ * Gestion des réponses à afficher dans la vue
+ *  
+ * Author : Adeline, Christophe, Cyril, Christine
+ */
 package response;
 
 import model.Address;

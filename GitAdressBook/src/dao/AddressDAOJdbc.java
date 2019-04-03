@@ -1,3 +1,13 @@
+/*
+ * Gére la relation avec la base de donnée :
+ *  Avec l'objet DTO : 
+ * Ouverture base de données
+ * Construction de la requête SQL pour le CRUD
+ * Execution requếte CRUD
+ * Déconnexion de la base de données
+ *  
+ * Author : Adeline, Christophe, Cyril, Christine
+ */
 package dao;
 
 import dto.AddressDTO;
@@ -16,6 +26,9 @@ import java.util.logging.Logger;
 
 public class AddressDAOJdbc implements AddressDAO {
 
+    /**
+     * Définition Méthode insertAddress
+     */
     @Override
     public Object insertAddress(AddressDTO addressDTO) throws AddressException {
         String req;
@@ -56,6 +69,9 @@ public class AddressDAOJdbc implements AddressDAO {
         return null;
     }
 
+    /**
+     * Définition Méthode retrieveAddress 
+     */
     @Override
     public List<AddressDTO> retrieveAddress(AddressDTO addressDTO) throws AddressException {
         String req;
@@ -147,6 +163,9 @@ public class AddressDAOJdbc implements AddressDAO {
         return addressDTOList;
     }
 
+    /**
+     * Définition Méthode deleteAddress 
+     */
     @Override
     public Object deleteAddress(AddressDTO addressDTO) throws AddressException {
         String req;
@@ -174,6 +193,11 @@ public class AddressDAOJdbc implements AddressDAO {
         return null;
     }
 
+    
+    /**
+     * Définition Méthode updateAddress 
+     */
+    
     @Override
     public Object updateAddress(AddressDTO addressDTO) throws AddressException {
         String req;

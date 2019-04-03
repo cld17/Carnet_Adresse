@@ -1,3 +1,8 @@
+/*
+ * Gestion des exceptions personnalisées de l'application
+ *  
+ * Author : Adeline, Christophe, Cyril, Christine
+ */
 package exception;
 
 import response.FormatErrorEnum;

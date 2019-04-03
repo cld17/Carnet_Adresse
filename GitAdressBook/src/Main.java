@@ -1,13 +1,12 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Lancement de l'application
+ *  
  */
 
 import vue.InterfaceCarnet;
 
 /**
- * @author A faire
+ * @author Adeline, Christophe, Cyril, Christine
  */
 public class Main {
 
@@ -17,7 +16,6 @@ public class Main {
     public static void main(String[] args) {
         // construit la vue
         InterfaceCarnet carnet = new InterfaceCarnet();
-
 
         carnet.setVisible(true);
     }

@@ -1,3 +1,10 @@
+/*
+ * Interface : utiliser pour le CRUD
+ * implémenté par la classe AdrdressDAOJdbc
+ *  
+ * Author : Adeline, Christophe, Cyril, Christine
+ */
+
 package dao;
 
 import dto.AddressDTO;

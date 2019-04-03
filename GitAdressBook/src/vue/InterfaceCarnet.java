@@ -1,3 +1,8 @@
+/*
+ * gestion de la vue (SWING)
+ *  
+ * Author : Adeline, Christophe, Cyril, Christine
+ */
 package vue;
 
 import controller.FormController;
@@ -562,11 +567,7 @@ public class InterfaceCarnet extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
     // public static void main(String[] args) {
-    /* Set the Nimbus look and feel */
     //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
     /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
      * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
@@ -602,18 +603,21 @@ public class InterfaceCarnet extends javax.swing.JFrame {
     //</editor-fold>
     //</editor-fold>
     //</editor-fold>
-
-    /* Create and display the form */
     //   java.awt.EventQueue.invokeLater(() -> {
     //       new InterfaceCarnet().setVisible(true);
     //   });
     //  }
     // boutton annuler
+    /**
+     * gestion du bouton annuler
+     */
     private void btnanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnanActionPerformed
         // RAZ de mes champs
         raz_zones();
     }//GEN-LAST:event_btnanActionPerformed
-
+    /**
+     * gestion du bouton enregistrer
+     */
     private void btnenrActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnenrActionPerformed
 
         // création objet address contenant les champs de la vue
@@ -640,10 +644,7 @@ public class InterfaceCarnet extends javax.swing.JFrame {
         address.setVille(txtVille.getText());
         address.setTelephoneMobile(intTelMobile.getText());
         address.setTelephoneFixe(intTelFixe.getText());
-        //address.setMailPerso(txtMailPerso.getText());
-        //address.setMailPro(txtMailPro.getText());
-
-        address.setMailPerso(txtMailPerso.getText().isEmpty() ? null : txtMailPerso.getText());
+                address.setMailPerso(txtMailPerso.getText().isEmpty() ? null : txtMailPerso.getText());
         address.setMailPro(txtMailPro.getText().isEmpty() ? null : txtMailPro.getText());
 
         // je demande au controller de creer l'adresse en lui passant l'objet rempli et je stocke le resultat
@@ -664,10 +665,9 @@ public class InterfaceCarnet extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_btnenrActionPerformed
-    // supprimer /nom dans carnet
-
-    // recherche par nom / voie / ville
-    // TODO 
+   /**
+     * gestion du bouton Rechercher : /nom /libellé voie /CP /ville
+     */
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 
         // création objet address contenant le champs nom libelle voie cp ville
@@ -709,7 +709,7 @@ public class InterfaceCarnet extends javax.swing.JFrame {
             jTable2.setModel(model);
             // RAZ de mes champs
 
-            // Affichage dans bouton
+            // Affichage dans bouton : solution non retenue
             //String req;
             //JFrame frame = new JFrame();
             //frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -786,7 +786,9 @@ public class InterfaceCarnet extends javax.swing.JFrame {
 
     }
 
-    // suppression enregistrement avec l'ID
+    /**
+     * gestion du bouton supprimer 
+     */
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // création objet address contenant les champs de la vue
         Address address = new Address();
@@ -823,7 +825,9 @@ public class InterfaceCarnet extends javax.swing.JFrame {
     private void hiddenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hiddenButtonActionPerformed
         hiddenButton.setVisible(false);
     }//GEN-LAST:event_hiddenButtonActionPerformed
-// mise a jour enregistrement
+/**
+     * gestion du bouton mise à jour 
+     */
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // création objet address contenant les champs de la vue
         Address address = new Address();
@@ -874,6 +878,10 @@ public class InterfaceCarnet extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_btnUpdateMouseClicked
 
+    /**
+     * Sélection dans liste résultat recherche pour affichage contact dans formulaire 
+     */
+    
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
         Map<String, Address> addresseMap = addresses.stream().collect(Collectors.toMap(Address::getId, adrs -> adrs));
 
@@ -958,6 +966,9 @@ public class InterfaceCarnet extends javax.swing.JFrame {
     private javax.swing.JTextField txtVille;
     // End of variables declaration//GEN-END:variables
 
+    /**
+     * gestion effacement zone formualaire, réinitialise bouton et vide liste resultat recherche
+     */
     private void raz_zones() {
 
         txtId.setText("");
