@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import validator.AddressValidator;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -683,15 +684,15 @@ public class InterfaceCarnet extends javax.swing.JFrame {
         // je demande au controller de faire le select sur le nom en lui passant l'objet rempli et je stocke le resultat
         CustomResponse resultat = controller.retrieveAddress(address);
         if (txtNom.getText().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Aucun nom d'entré. Vous avez la liste complète");
+            JOptionPane.showMessageDialog(this, "Saisir nom ou choisir un contact dans la liste");
         }
-
+        
         if (resultat.getResponseCode().equals(FormatErrorEnum.SUCCESS)) {
             addresses = resultat.getAddresses();
 
             // affichage dans tableau
             if (addresses.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "Pas de contact avec les infos entrées.");
+                JOptionPane.showMessageDialog(this, "Aucun contact trouvé");
             }
             // Définition du modèle
             DefaultTableModel model = new DefaultTableModel();
@@ -801,7 +802,7 @@ public class InterfaceCarnet extends javax.swing.JFrame {
             raz_zones();
 
             // popup réussite
-            JOptionPane.showMessageDialog(this, "Contact supprimé avec succés.");
+            JOptionPane.showMessageDialog(this, "Contact supprimé avec succès");
         } else {
             // TODO : mettre des champs en rouge
             // TODO;popup 
@@ -861,7 +862,7 @@ public class InterfaceCarnet extends javax.swing.JFrame {
             raz_zones();
 
             // popup réussite
-            JOptionPane.showMessageDialog(this, "Contact mis à jour avec succès.");
+            JOptionPane.showMessageDialog(this, "Contact mis à jour avec succès");
         } else {
             // TODO : mettre des champs en rouge
             // TODO;popup 
