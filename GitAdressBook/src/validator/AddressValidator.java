@@ -4,6 +4,10 @@
  *   
  * Author : Adeline, Christophe, Cyril, Christine
  */
+
+// les JOptionPane doivent être dans la vue.
+// Validator -> envoie le message et c'est la vue qui affiche le popup!!!!!!!
+
 package validator;
 
 import exception.AddressValidatorException;
@@ -44,6 +48,10 @@ public class AddressValidator {
         //JOptionPane.showMessageDialog("Veuillez saisir un nom.");
         //throw new AddressValidatorException("Le prenom du contact doit contenir au moins 2 caractères.");
         //}
+        
+        // pas bon -> c'est la vue qui affiche et pas le validator...
+        
+        
         if (!Pattern.matches("[A-Za-z/' /-]{0,50}", prenom)) {
             JOptionPane.showMessageDialog(null, "(Prenom) Saisie texte incorrecte");
             throw new AddressValidatorException("Le prenom du contact doit contenir 50 caractères alphabétiques maximum");
@@ -57,6 +65,11 @@ public class AddressValidator {
      * Vérifie que le paramètre en entrée est bien une chaine de 0 à 50 caratères
      * Envoie un popup d'alerte si ce n'est pas le cas
      */
+    
+    
+    // pas bon -> c'est la vue qui affiche et pas le validator...
+    
+    
     private static void validationApparbat(String appartBat) throws AddressValidatorException {
         if (!Pattern.matches("[A-Za-z0-9.' -]{0,50}", appartBat)) {
             JOptionPane.showMessageDialog(null, "(Appart/Bat) Saisie texte incorrecte");
@@ -73,6 +86,12 @@ public class AddressValidator {
      * Envoie un popup d'alerte si ce n'est pas le cas
      * Valide le nom : obligatioire 
      */
+    
+    
+    // pas bon -> c'est la vue qui affiche et pas le validator...
+    
+    
+    
     private static void validationNumeroVoie(String numeroVoie) throws AddressValidatorException {
         if (!Pattern.matches("[0-9]{0,10}", numeroVoie)) {
             JOptionPane.showMessageDialog(null, "(Numéro voie) Saisie texte incorrecte");
@@ -87,6 +106,10 @@ public class AddressValidator {
      * Vérifie que le paramètre en entrée est bien une chaine de 0 à 10 caratères
      * Envoie un popup d'alerte si ce n'est pas le cas
      */
+    
+    // pas bon -> c'est la vue qui affiche et pas le validator...
+    
+    
     private static void validationComplementNumeroVoie(String complementNumeroVoie) throws AddressValidatorException {
         if (!Pattern.matches("[A-Za-z/' /-]{0,10}", complementNumeroVoie)) {
             JOptionPane.showMessageDialog(null, "(Complément numéro voie) Saisie texte incorrecte");
@@ -103,6 +126,11 @@ public class AddressValidator {
      * Envoie un popup d'alerte si ce n'est pas le cas
       * Valide le prénom si rempli : non obligatioire
      */
+    
+    
+    // pas bon -> c'est la vue qui affiche et pas le validator...
+    
+    
      private static void validationLibelleVoie(String libelleVoie) throws AddressValidatorException {
         if (!Pattern.matches("[A-Za-z/' /-]{0,50}", libelleVoie)) {
             JOptionPane.showMessageDialog(null, "(Libellé voie) Saisie texte incorrecte");
@@ -117,6 +145,12 @@ public class AddressValidator {
      * Vérifie que le paramètre en entrée est bien une chaine de 0 à 5 caratères numériques
      * Envoie un popup d'alerte si ce n'est pas le cas
      */
+     
+     
+     // pas bon -> c'est la vue qui affiche et pas le validator...
+     
+     
+     
     private static void validationCodePostal(String codePostal) throws AddressValidatorException {
         if (!Pattern.matches("[0-9 ]{0,5}", codePostal)) {
             JOptionPane.showMessageDialog(null, "(Code postal) Saisie texte incorrecte");
@@ -131,6 +165,9 @@ public class AddressValidator {
      * Vérifie que le paramètre en entrée est bien une chaine de 0 à 50 caratères alphabétiques
      * Envoie un popup d'alerte si ce n'est pas le cas
      */
+    
+    // pas bon -> c'est la vue qui affiche et pas le validator...
+    
     private static void validationVille(String ville) throws AddressValidatorException {
         if (!Pattern.matches("[A-Za-z/' /-]{0,50}", ville)) {
             JOptionPane.showMessageDialog(null, "(ville) Saisie texte incorrecte");
@@ -145,6 +182,11 @@ public class AddressValidator {
      * Vérifie que le paramètre en entrée est bien une chaine de 0 à 10 caratères numeriques
      * Envoie un popup d'alerte si ce n'est pas le cas
      */
+    
+    
+    // pas bon -> c'est la vue qui affiche et pas le validator...
+    
+    
     private static void validationNumTel(String numTel, String type) throws AddressValidatorException {
         if (!Pattern.matches("[0-9 /./-]{0,50}", numTel)) {
             if (type == "mobile"){
@@ -163,6 +205,10 @@ public class AddressValidator {
      * Vérifie que le paramètre en entrée est bien une chaine de 0 à 50 caratères alphanumeriques contenant @
      * Envoie un popup d'alerte si ce n'est pas le cas
      */
+    
+    // pas bon -> c'est la vue qui affiche et pas le validator...
+    
+    
     private static void validationMail(String mail, String type) throws AddressValidatorException {
         if (mail != null && mail.trim().length() < 1) {
             if (!Pattern.matches("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", mail)) {
