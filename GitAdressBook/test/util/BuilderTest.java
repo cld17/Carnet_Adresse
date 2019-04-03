@@ -6,7 +6,6 @@
 package util;
 
 import dto.AddressDTO;
-import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import model.Address;
 import org.junit.After;

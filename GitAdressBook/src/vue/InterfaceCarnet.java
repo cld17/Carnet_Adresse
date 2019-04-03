@@ -16,7 +16,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
-import validator.AddressValidator;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -28,7 +27,7 @@ import validator.AddressValidator;
  */
 public class InterfaceCarnet extends javax.swing.JFrame {
 
-    private FormController controller;
+    private final FormController controller;
     private List<Address> addresses = new ArrayList<>();
 
     /**
@@ -645,7 +644,7 @@ public class InterfaceCarnet extends javax.swing.JFrame {
         address.setVille(txtVille.getText());
         address.setTelephoneMobile(intTelMobile.getText());
         address.setTelephoneFixe(intTelFixe.getText());
-                address.setMailPerso(txtMailPerso.getText().isEmpty() ? null : txtMailPerso.getText());
+        address.setMailPerso(txtMailPerso.getText().isEmpty() ? null : txtMailPerso.getText());
         address.setMailPro(txtMailPro.getText().isEmpty() ? null : txtMailPro.getText());
 
         // je demande au controller de creer l'adresse en lui passant l'objet rempli et je stocke le resultat
@@ -666,7 +665,7 @@ public class InterfaceCarnet extends javax.swing.JFrame {
 
 
     }//GEN-LAST:event_btnenrActionPerformed
-   /**
+    /**
      * gestion du bouton Rechercher : /nom /libellé voie /CP /ville
      */
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
@@ -686,7 +685,7 @@ public class InterfaceCarnet extends javax.swing.JFrame {
         if (txtNom.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Saisir nom ou choisir un contact dans la liste");
         }
-        
+
         if (resultat.getResponseCode().equals(FormatErrorEnum.SUCCESS)) {
             addresses = resultat.getAddresses();
 
@@ -788,7 +787,7 @@ public class InterfaceCarnet extends javax.swing.JFrame {
     }
 
     /**
-     * gestion du bouton supprimer 
+     * gestion du bouton supprimer
      */
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // création objet address contenant les champs de la vue
@@ -826,8 +825,8 @@ public class InterfaceCarnet extends javax.swing.JFrame {
     private void hiddenButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hiddenButtonActionPerformed
         hiddenButton.setVisible(false);
     }//GEN-LAST:event_hiddenButtonActionPerformed
-/**
-     * gestion du bouton mise à jour 
+    /**
+     * gestion du bouton mise à jour
      */
     private void btnUpdateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateActionPerformed
         // création objet address contenant les champs de la vue
@@ -880,9 +879,10 @@ public class InterfaceCarnet extends javax.swing.JFrame {
     }//GEN-LAST:event_btnUpdateMouseClicked
 
     /**
-     * Sélection dans liste résultat recherche pour affichage contact dans formulaire 
+     * Sélection dans liste résultat recherche pour affichage contact dans
+     * formulaire
      */
-    
+
     private void jTable2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable2MouseClicked
         Map<String, Address> addresseMap = addresses.stream().collect(Collectors.toMap(Address::getId, adrs -> adrs));
 
@@ -968,7 +968,8 @@ public class InterfaceCarnet extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     /**
-     * gestion effacement zone formualaire, réinitialise bouton et vide liste resultat recherche
+     * gestion effacement zone formualaire, réinitialise bouton et vide liste
+     * resultat recherche
      */
     private void raz_zones() {
 

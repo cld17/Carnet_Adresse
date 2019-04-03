@@ -14,10 +14,11 @@ import java.util.logging.Logger;
  * @author stag
  */
 public class DBUtil {
+
     private static Connection con;
-    private static String url = "jdbc:mysql://localhost:3306/carnet_adresse";
-    private static String login = "root";
-    private static String password = "1234512345";
+    private static final String url = "jdbc:mysql://localhost:3306/carnet_adresse";
+    private static final String login = "root";
+    private static final String password = "1234512345";
 
     public static Connection connexion() throws SQLException {
 
@@ -32,8 +33,8 @@ public class DBUtil {
         }
         return con;
     }
-    
-    public static void deconnexion () throws SQLException {
+
+    public static void deconnexion() throws SQLException {
         try {
             con.close();
         } catch (SQLException ex) {
