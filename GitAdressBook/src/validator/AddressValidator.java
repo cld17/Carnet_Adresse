@@ -1,3 +1,9 @@
+/*
+ * Validdation des champs de données
+ * Liste des méthodes par nom de champs
+ *   
+ * Author : Adeline, Christophe, Cyril, Christine
+ */
 package validator;
 
 import exception.AddressValidatorException;
@@ -65,6 +71,7 @@ public class AddressValidator {
      * @autor Christophe COURONNE / Christine LAVAUD / Cyril VAN-LOO / Adeline GALLAND
      * Vérifie que le paramètre en entrée est bien un int de 0 à 10 caratères
      * Envoie un popup d'alerte si ce n'est pas le cas
+     * Valide le nom : obligatioire 
      */
     private static void validationNumeroVoie(String numeroVoie) throws AddressValidatorException {
         if (!Pattern.matches("[0-9]{0,10}", numeroVoie)) {
@@ -88,18 +95,20 @@ public class AddressValidator {
     }
 
     /**
+
      *  *** VALIDATION DE LIBELLEVOIE ***
      * @param libelleVoie
      * @autor Christophe COURONNE / Christine LAVAUD / Cyril VAN-LOO / Adeline GALLAND
      * Vérifie que le paramètre en entrée est bien une chaine de 0 à 50 caratères alphanumériques
      * Envoie un popup d'alerte si ce n'est pas le cas
+      * Valide le prénom si rempli : non obligatioire
      */
-    private static void validationLibelleVoie(String libelleVoie) throws AddressValidatorException {
-        if (!Pattern.matches("[0-9A-Za-z/' /-]{0,50}", libelleVoie)) {
+     private static void validationLibelleVoie(String le=ibelleVoie) throws AddressValidatorException {
+     if (!Pattern.matches("[0-9A-Za-z/' /-]{0,50}", libelleVoie)) {
             JOptionPane.showMessageDialog(null, "(Libellé voie) Saisie texte incorrecte");
             throw new AddressValidatorException("Le champs doit contenir 50 caractères alphanumérique maximum");
         }
-    }
+     }
 
     /**
      *  *** VALIDATION DE CODEPOSTAL ***

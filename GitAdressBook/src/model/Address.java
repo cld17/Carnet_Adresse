@@ -1,3 +1,16 @@
+/*
+ * Objet contenant les champs de la vue 
+ * Rempli dans la vue : InterfaceCarnet.java
+ * utilisé dans : 
+ * FormController.java
+ * CustomResponse.java
+ * Builder.java (construction de l'objet AddressDAO)
+ * AddressValidator.java  (validation)
+
+ * 
+ *  
+ * Author : Adeline, Christophe, Cyril, Christine
+ */
 package model;
 
 public class Address {

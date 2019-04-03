@@ -1,3 +1,8 @@
+/*
+ * Gestion des exceptions
+ *  
+ * Author : Adeline, Christophe, Cyril, Christine
+ */
 package exception;
 
 public class AddressException extends Exception {

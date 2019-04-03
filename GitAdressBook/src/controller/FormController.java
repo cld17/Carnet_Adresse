@@ -1,11 +1,13 @@
 package controller;
 
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Modele MVC appliqué : Le controller gére : 
+ * la vue
+ * la validation des champs saisis
+ * la préparation de l'objet DTO
+ * l'appel de la classe DAO pour la mise a jour dans la base
+ *  
  */
-
 import dao.AddressDAO;
 import dao.AddressDAOJdbc;
 import dto.AddressDTO;
@@ -21,22 +23,28 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author stag
+ * @author Adeline, Christophe, Cyril, Christine
  */
 public class FormController {
 
-    // type = nom de l'interRetrieveface (pas l'implementation.
-    // si l'implementation change on a pas à le modifier
+    /**
+     * type = nom de l'interRetrieveface (pas l'implementation. si
+     * l'implementation change on a pas à le modifier
+     */
     private final AddressDAO addressDAO;
 
     public FormController() {
 
-        // Creation requete sql + ouverture connexion base sql + deconnexion base sql  
-        // retourne une exception si erreur
-        // on utilise l'implementation
+        /**
+         * Creation requete sql + ouverture connexion base sql + deconnexion
+         * base sql retourne une exception si erreur on utilise l'implementation
+         */
         addressDAO = new AddressDAOJdbc();
     }
 
+    /**
+     * Creation contact
+     */
     public CustomResponse createAddress(Address address) {
         // création objet reponse
         CustomResponse customResponse = new CustomResponse();
@@ -63,11 +71,13 @@ public class FormController {
         return customResponse;
     }
 
-    // recherche
+    /**
+     * Recherche contact
+     */
     public CustomResponse retrieveAddress(Address address) {
         // création objet reponse
         CustomResponse customResponse = new CustomResponse();
-       
+
         List<Address> resultat = new ArrayList<>();
 
         try {
@@ -76,13 +86,10 @@ public class FormController {
             AddressDTO addressDTO = Builder.buildAddressDTO(address);
 
             // Récupération liste
-            
             List<AddressDTO> addressDTOList = addressDAO.retrieveAddress(addressDTO);
             System.out.println("controller " + addressDTOList);
 
-
             resultat.addAll(Builder.buildAddresses(addressDTOList));
-
 
         } catch (AddressException e) {
             customResponse.setResponseCode(FormatErrorEnum.DATABASE_ERROR);
@@ -97,18 +104,19 @@ public class FormController {
         return customResponse;
     }
 
-    //
-    
-     public CustomResponse deleteAddress(Address address) {
+    /**
+     * Suppression contact
+     */
+    public CustomResponse deleteAddress(Address address) {
         // création objet reponse
         CustomResponse customResponse = new CustomResponse();
 
         try {
-         
+
             AddressDTO addressDTO = Builder.buildAddressDTO(address);
 
             addressDAO.deleteAddress(addressDTO);
-       
+
         } catch (AddressException e) {
             customResponse.setResponseCode(FormatErrorEnum.DATABASE_ERROR);
             customResponse.setErrorMessage(e.getMessage());
@@ -120,6 +128,9 @@ public class FormController {
         return customResponse;
     }
 
+    /**
+     * Mise à jour contact
+     */
     public CustomResponse updateAddress(Address address) {// création objet reponse
         CustomResponse customResponse = new CustomResponse();
 
