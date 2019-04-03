@@ -1,6 +1,7 @@
 package validator;
 
 import exception.AddressValidatorException;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import model.Address;
 import response.FormatErrorEnum;
@@ -31,14 +32,16 @@ public class AddressValidator {
     /**
      * Valide le nom
      */
-    private static void validationNom(String nom) throws AddressValidatorException {
-        if (true) {
-
+    public static void validationNom(String nom) throws AddressValidatorException {
+        
+        if (!Pattern.matches("[A-Za-z/' /-]{2,50}", nom)) {
+            JOptionPane.showMessageDialog(null, "Saisie texte incorrecte (50 caractères max)");
+            throw new AddressValidatorException("Le nom du contact doit contenir au moins 2 caractères.");
         }
         if (nom != null && nom.trim().length() < 2) {
 
             // popup réussite
-            JOptionPane.showMessageDialog(null, "Veuillez saisir un nom.");
+            JOptionPane.showMessageDialog(null, "Saisir un nom (obligatoire)");
             throw new AddressValidatorException("Le nom du contact doit contenir au moins 2 caractères.");
         }
     }
@@ -52,7 +55,11 @@ public class AddressValidator {
 
             // popup réussite
             //    JOptionPane.showMessageDialog("Veuillez saisir un nom.");
-            throw new AddressValidatorException("Le prennom du contact doit contenir au moins 2 caractères.");
+            throw new AddressValidatorException("Le prenom du contact doit contenir au moins 2 caractères.");
+        }
+        if (!Pattern.matches("[A-Za-z/' /-]{2,50}", prenom)) {
+            JOptionPane.showMessageDialog(null, "Saisie texte incorrecte (50 caractères max)");
+            throw new AddressValidatorException("Le prenom du contact doit contenir au moins 2 caractères.");
         }
     }
 
