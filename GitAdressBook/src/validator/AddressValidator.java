@@ -103,12 +103,12 @@ public class AddressValidator {
      * Envoie un popup d'alerte si ce n'est pas le cas
       * Valide le prénom si rempli : non obligatioire
      */
-     private static void validationLibelleVoie(String le=ibelleVoie) throws AddressValidatorException {
-     if (!Pattern.matches("[0-9A-Za-z/' /-]{0,50}", libelleVoie)) {
+     private static void validationLibelleVoie(String libelleVoie) throws AddressValidatorException {
+        if (!Pattern.matches("[A-Za-z/' /-]{0,50}", libelleVoie)) {
             JOptionPane.showMessageDialog(null, "(Libellé voie) Saisie texte incorrecte");
-            throw new AddressValidatorException("Le champs doit contenir 50 caractères alphanumérique maximum");
+            throw new AddressValidatorException("Le champs doit contenir 50 caractères alphabétiques maximum");
         }
-     }
+    }
 
     /**
      *  *** VALIDATION DE CODEPOSTAL ***
