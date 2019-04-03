@@ -1,3 +1,12 @@
+/*
+ * Objet DTO : 
+ * contient les champs de la vue (objet address)
+ * formatés pour transfert à la base de donnée 
+ * par l'intermédiaire de la classe AddressDAOJdbc
+ *  
+ * Author : Adeline, Christophe, Cyril, Christine
+ */
+
 package dto;
 
 public class AddressDTO {

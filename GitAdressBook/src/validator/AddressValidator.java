@@ -1,3 +1,9 @@
+/*
+ * Validdation des champs de données
+ * Liste des méthodes par nom de champs
+ *   
+ * Author : Adeline, Christophe, Cyril, Christine
+ */
 package validator;
 
 import exception.AddressValidatorException;
@@ -30,7 +36,7 @@ public class AddressValidator {
     String regEmail = "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
 
     /**
-     * Valide le nom
+     * Valide le nom : obligatioire 
      */
     public static void validationNom(String nom) throws AddressValidatorException {
         
@@ -47,8 +53,9 @@ public class AddressValidator {
     }
 
     /**
-     * Valide le prenom : si société prénom non obligatoire
+     * Valide le prénom si rempli : non obligatioire 
      */
+    
     private static void validationPrenom(String prenom, String boutonCivilite) throws AddressValidatorException {
         boolean cestunesociete = Boolean.parseBoolean(boutonCivilite);
         if (cestunesociete || prenom != null && prenom.trim().length() < 2) {

@@ -1,3 +1,8 @@
+/*
+ * Constructor objetDAO à partir de l'objet Address (champs vue) 
+ *  
+ * Author : Adeline, Christophe, Cyril, Christine
+ */
 package util;
 
 import dto.AddressDTO;
@@ -8,6 +13,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class Builder {
+    
+    /**
+     * Construction AddressDTO 
+     */
 
     public static AddressDTO buildAddressDTO(Address address) {
         AddressDTO addressDTO = new AddressDTO();
@@ -34,6 +43,10 @@ public class Builder {
         return addressDTO;
     }
 
+    /**
+     * Construction Address
+     */
+    
     public static Address buildAddress(AddressDTO addressDTO) {
         Address address = new Address();
 
@@ -55,6 +68,10 @@ public class Builder {
         return address;
     }
 
+    /**
+     * Construction collection : recuperation liste lors d'une recherche
+     */
+    
     public static List<Address> buildAddresses(List<AddressDTO> addressDTOList) {
         List<Address> resultat = new ArrayList<>();
         //            for (int i = 0; i < addressDTOList.size(); i++) {

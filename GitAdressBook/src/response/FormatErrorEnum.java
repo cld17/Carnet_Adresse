@@ -1,3 +1,8 @@
+/*
+ * Enumération des réponses possibles
+ *  
+ * Author : Adeline, Christophe, Cyril, Christine
+ */
 package response;
 
 public enum FormatErrorEnum {
