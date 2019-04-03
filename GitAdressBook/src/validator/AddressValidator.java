@@ -4,106 +4,181 @@ import exception.AddressValidatorException;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 import model.Address;
-import response.FormatErrorEnum;
 
 public class AddressValidator {
 
-    // Regex pour nom, prenom, libellé voie, ville de taille 50
-    String regAlpha50 = "[A-Za-z/' /-]{2,50}";
-
-    // Regex pour complement numéro voie
-    String regAlpha10 = "[A-Za-z/' /-]{2,10}";
-
-    // Regex pour appart/bat
-    String regAlphaNum = "[A-Za-z0-9.' -]{1,50}";
-
-    // Regex pour téléphone
-    String regTel = "^0[0-9]{9}";
-
-    // Regex pour numéro de la voie, code postal
-    String regNumerique10 = "[0-9]{0,10}";
-
-    // Regex pour numéro du code postal
-    String regCP = "[0-9]{5}";
-
-    // Regex pour email
-    String regEmail = "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$";
-
     /**
-     * Valide le nom
+     *  *** VALIDATION DU NOM ***
+     * @param nom
+     * @autor Christophe COURONNE / Christine LAVAUD / Cyril VAN-LOO / Adeline GALLAND
+     * Vérifie que le paramètre en entrée est bien une chaine de 2 à 50 caratères
+     * Vérifie que le champ n'est pas null Envoie un popup d'alerte si ce n'est pas le cas
      */
     public static void validationNom(String nom) throws AddressValidatorException {
-        
-        if (!Pattern.matches("[A-Za-z/' /-]{2,50}", nom)) {
-            JOptionPane.showMessageDialog(null, "Saisie texte incorrecte (50 caractères max)");
-            throw new AddressValidatorException("Le nom du contact doit contenir au moins 2 caractères.");
-        }
-        if (nom != null && nom.trim().length() < 2) {
-
-            // popup réussite
+        if (nom != null && nom.trim().length() < 1) {
             JOptionPane.showMessageDialog(null, "Saisir un nom (obligatoire)");
-            throw new AddressValidatorException("Le nom du contact doit contenir au moins 2 caractères.");
+            throw new AddressValidatorException("Le nom du contact doit contenir au moins 2 caractères");
+        }
+        if (!Pattern.matches("[A-Za-z/' /-]{2,50}", nom)) {
+            JOptionPane.showMessageDialog(null, "(Nom) Saisie texte incorrecte");
+            throw new AddressValidatorException("Le nom du contact doit contenir de 2 à 50 caractères alphabétiques");
         }
     }
 
     /**
-     * Valide le prenom : si société prénom non obligatoire
+     *  *** VALIDATION DU PRENOM ***
+     * @param prenom
+     * @autor Christophe COURONNE / Christine LAVAUD / Cyril VAN-LOO / Adeline GALLAND
+     * Vérifie que le paramètre en entrée est bien une chaine de 0 à 50 caratères
+     * Envoie un popup d'alerte si ce n'est pas le cas
      */
-    private static void validationPrenom(String prenom, String boutonCivilite) throws AddressValidatorException {
-        boolean cestunesociete = Boolean.parseBoolean(boutonCivilite);
-        if (cestunesociete || prenom != null && prenom.trim().length() < 2) {
-
-            // popup réussite
-            //    JOptionPane.showMessageDialog("Veuillez saisir un nom.");
-            throw new AddressValidatorException("Le prenom du contact doit contenir au moins 2 caractères.");
-        }
-        if (!Pattern.matches("[A-Za-z/' /-]{2,50}", prenom)) {
-            JOptionPane.showMessageDialog(null, "Saisie texte incorrecte (50 caractères max)");
-            throw new AddressValidatorException("Le prenom du contact doit contenir au moins 2 caractères.");
-        }
-    }
-
-    // intNumeroVoie
-    /**
-     * Valide le prenom : si société prénom non obligatoire
-     *
-     * @param intNumeroVoie
-     */
-    // private static void validationNumeroVoie(String intNumeroVoie) throws AddressValidatorException {
-    //     try {
-    //          Integer.parseInt(intNumeroVoie);
-    //      } catch (NumberFormatException e) {
-    //          throw new AddressValidatorException("Le numéro de la voie doit être numérique.", e);
-    //    }
-    //  if (intNumeroVoie != null || int intNumeroVoie entier = Integer.parseInt(intNumeroVoie)) {
-    //
-    //    JOptionPane.showMessageDialog("Veuillez saisir un nom.");
-    // }
-    //  }
-    /**
-     * Valide l'adresse mail saisie.
-     */
-    private static void validationEmail(String email, String type) throws AddressValidatorException {
-        if (email != null && email.trim().length() != 0) {
-            if (!email.matches("([^.@]+)(\\.[^.@]+)*@([^.@]+\\.)+([^.@]+)")) {
-                String errorMessage = type.equals("pro") ? "Email professionel invalide." : "Email personnel invalide.";
-                throw new AddressValidatorException(errorMessage, FormatErrorEnum.EMAIL_ERROR);
-            }
-        } //else {
-
-        //throw new AddressValidatorException("Merci de saisir une adresse mail.", FormatErrorEnum.EMAIL_ERROR);
+    private static void validationPrenom(String prenom) throws AddressValidatorException {
+        //boolean cestunesociete = Boolean.parseBoolean(boutonCivilite);
+        //if (cestunesociete || prenom != null && prenom.trim().length() < 2) {
+        //JOptionPane.showMessageDialog("Veuillez saisir un nom.");
+        //throw new AddressValidatorException("Le prenom du contact doit contenir au moins 2 caractères.");
         //}
+        if (!Pattern.matches("[A-Za-z/' /-]{0,50}", prenom)) {
+            JOptionPane.showMessageDialog(null, "(Prenom) Saisie texte incorrecte");
+            throw new AddressValidatorException("Le prenom du contact doit contenir 50 caractères alphabétiques maximum");
+        }
+    }
+
+    /**
+     *  *** VALIDATION DE APPARTBAT ***
+     * @param appartBat
+     * @autor Christophe COURONNE / Christine LAVAUD / Cyril VAN-LOO / Adeline GALLAND
+     * Vérifie que le paramètre en entrée est bien une chaine de 0 à 50 caratères
+     * Envoie un popup d'alerte si ce n'est pas le cas
+     */
+    private static void validationApparbat(String appartBat) throws AddressValidatorException {
+        if (!Pattern.matches("[A-Za-z0-9.' -]{0,50}", appartBat)) {
+            JOptionPane.showMessageDialog(null, "(Appart/Bat) Saisie texte incorrecte");
+            throw new AddressValidatorException("Le champs doit contenir 50 caractères alphanumérique maximum");
+        }
+    }
+
+    /**
+     *  *** VALIDATION DE NUMVOIE ***
+     *
+     * @param numeroVoie
+     * @autor Christophe COURONNE / Christine LAVAUD / Cyril VAN-LOO / Adeline GALLAND
+     * Vérifie que le paramètre en entrée est bien un int de 0 à 10 caratères
+     * Envoie un popup d'alerte si ce n'est pas le cas
+     */
+    private static void validationNumeroVoie(String numeroVoie) throws AddressValidatorException {
+        if (!Pattern.matches("[0-9]{0,10}", numeroVoie)) {
+            JOptionPane.showMessageDialog(null, "(Numéro voie) Saisie texte incorrecte");
+            throw new AddressValidatorException("Le champs doit contenir 10 caractères numérique maximum");
+        }
+    }
+
+    /**
+     *  *** VALIDATION DE COMPLEMENTNUMVOIE ***
+     * @param complementNumeroVoie
+     * @autor Christophe COURONNE / Christine LAVAUD / Cyril VAN-LOO / Adeline GALLAND
+     * Vérifie que le paramètre en entrée est bien une chaine de 0 à 10 caratères
+     * Envoie un popup d'alerte si ce n'est pas le cas
+     */
+    private static void validationComplementNumeroVoie(String complementNumeroVoie) throws AddressValidatorException {
+        if (!Pattern.matches("[A-Za-z/' /-]{0,10}", complementNumeroVoie)) {
+            JOptionPane.showMessageDialog(null, "(Complément numéro voie) Saisie texte incorrecte");
+            throw new AddressValidatorException("Le champs doit contenir 10 caractères alphabétiques maximum");
+        }
+    }
+
+    /**
+     *  *** VALIDATION DE LIBELLEVOIE ***
+     * @param libelleVoie
+     * @autor Christophe COURONNE / Christine LAVAUD / Cyril VAN-LOO / Adeline GALLAND
+     * Vérifie que le paramètre en entrée est bien une chaine de 0 à 50 caratères alphanumériques
+     * Envoie un popup d'alerte si ce n'est pas le cas
+     */
+    private static void validationLibelleVoie(String libelleVoie) throws AddressValidatorException {
+        if (!Pattern.matches("[0-9A-Za-z/' /-]{0,50}", libelleVoie)) {
+            JOptionPane.showMessageDialog(null, "(Libellé voie) Saisie texte incorrecte");
+            throw new AddressValidatorException("Le champs doit contenir 50 caractères alphanumérique maximum");
+        }
+    }
+
+    /**
+     *  *** VALIDATION DE CODEPOSTAL ***
+     * @param codePostal
+     * @autor Christophe COURONNE / Christine LAVAUD / Cyril VAN-LOO / Adeline GALLAND
+     * Vérifie que le paramètre en entrée est bien une chaine de 0 à 5 caratères numériques
+     * Envoie un popup d'alerte si ce n'est pas le cas
+     */
+    private static void validationCodePostal(String codePostal) throws AddressValidatorException {
+        if (!Pattern.matches("[0-9 ]{0,5}", codePostal)) {
+            JOptionPane.showMessageDialog(null, "(Code postal) Saisie texte incorrecte");
+            throw new AddressValidatorException("Le champs doit contenir 5 caractères numérique maximum");
+        }
+    }
+
+    /**
+     *  *** VALIDATION DE VILLE ***
+     * @param ville
+     * @autor Christophe COURONNE / Christine LAVAUD / Cyril VAN-LOO / Adeline GALLAND
+     * Vérifie que le paramètre en entrée est bien une chaine de 0 à 50 caratères alphabétiques
+     * Envoie un popup d'alerte si ce n'est pas le cas
+     */
+    private static void validationVille(String ville) throws AddressValidatorException {
+        if (!Pattern.matches("[A-Za-z/' /-]{0,50}", ville)) {
+            JOptionPane.showMessageDialog(null, "(ville) Saisie texte incorrecte");
+            throw new AddressValidatorException("Le champs doit contenir 50 caractères alphabétiques maximum");
+        }
+    }
+
+    /**
+     *  *** VALIDATION DE NUMTEL ***
+     * @param numTel
+     * @autor Christophe COURONNE / Christine LAVAUD / Cyril VAN-LOO / Adeline GALLAND
+     * Vérifie que le paramètre en entrée est bien une chaine de 0 à 10 caratères numeriques
+     * Envoie un popup d'alerte si ce n'est pas le cas
+     */
+    private static void validationNumTel(String numTel, String type) throws AddressValidatorException {
+        if (!Pattern.matches("[0-9 /./-]{0,50}", numTel)) {
+            if (type == "mobile"){
+                    JOptionPane.showMessageDialog(null, "(Téléphone mobile) Saisie texte incorrecte");
+                }else{
+                    JOptionPane.showMessageDialog(null, "(Téléphone mobile) Saisie texte incorrecte");
+                }
+            throw new AddressValidatorException("Le champs doit contenir 10 caractères numériques maximum");
+        }
+    }
+
+    /**
+     *  *** VALIDATION DE MAIL ***
+     * @param mail
+     * @autor Christophe COURONNE / Christine LAVAUD / Cyril VAN-LOO / Adeline GALLAND
+     * Vérifie que le paramètre en entrée est bien une chaine de 0 à 50 caratères alphanumeriques contenant @
+     * Envoie un popup d'alerte si ce n'est pas le cas
+     */
+    private static void validationMail(String mail, String type) throws AddressValidatorException {
+        if (mail != null && mail.trim().length() < 1) {
+            if (!Pattern.matches("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", mail)) {
+                if (type == "perso"){
+                    JOptionPane.showMessageDialog(null, "(Mail perso) Saisie texte incorrecte");
+                }else{
+                    JOptionPane.showMessageDialog(null, "(Mail pro) Saisie texte incorrecte");
+                }
+                throw new AddressValidatorException("Le champs doit contenir @ et une extension");
+            }
+        }
     }
 
     public static void validate(Address address) throws AddressValidatorException {
-        validationEmail(address.getMailPerso(), "perso");
-        //   validationEmail(address.getMailPro(), "pro");
         validationNom(address.getNom());
-        // validationNumeroVoie(address.getNumeroVoie());
-        validationPrenom(address.getPrenom(), address.getCivilite());
-        // TODO
-        // ajout methode pour chaque champs
-        // Code Postal
-        // Nom
+        validationPrenom(address.getPrenom());
+        validationApparbat(address.getAppartbat());
+        validationNumeroVoie(address.getNumeroVoie());
+        validationComplementNumeroVoie(address.getComplementNumeroVoie());
+        validationLibelleVoie(address.getLibelleVoie());
+        validationCodePostal(address.getCodePostal());
+        validationVille(address.getVille());
+        validationNumTel(address.getTelephoneMobile(), "mobile");
+        validationNumTel(address.getTelephoneFixe(), "fixe");
+        validationMail(address.getMailPerso(), "perso");
+        validationMail(address.getMailPro(), "pro");
     }
 }
