@@ -28,6 +28,9 @@ public class AddressDAOJdbc implements AddressDAO {
 
     /**
      * Définition Méthode insertAddress
+     * @param addressDTO
+     * @return 
+     * @throws exception.AddressException
      */
     @Override
     public Object insertAddress(AddressDTO addressDTO) throws AddressException {
@@ -70,7 +73,10 @@ public class AddressDAOJdbc implements AddressDAO {
     }
 
     /**
-     * Définition Méthode retrieveAddress 
+     * Définition Méthode retrieveAddress
+     * @param addressDTO
+     * @return 
+     * @throws exception.AddressException
      */
     @Override
     public List<AddressDTO> retrieveAddress(AddressDTO addressDTO) throws AddressException {
@@ -164,7 +170,10 @@ public class AddressDAOJdbc implements AddressDAO {
     }
 
     /**
-     * Définition Méthode deleteAddress 
+     * Définition Méthode deleteAddress
+     * @param addressDTO
+     * @return 
+     * @throws exception.AddressException
      */
     @Override
     public Object deleteAddress(AddressDTO addressDTO) throws AddressException {
@@ -193,11 +202,12 @@ public class AddressDAOJdbc implements AddressDAO {
         return null;
     }
 
-    
     /**
-     * Définition Méthode updateAddress 
+     * Définition Méthode updateAddress
+     * @param addressDTO
+     * @return 
+     * @throws exception.AddressException
      */
-    
     @Override
     public Object updateAddress(AddressDTO addressDTO) throws AddressException {
         String req;

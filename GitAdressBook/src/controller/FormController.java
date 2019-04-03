@@ -44,6 +44,8 @@ public class FormController {
 
     /**
      * Creation contact
+     * @param address
+     * @return 
      */
     public CustomResponse createAddress(Address address) {
         // création objet reponse
@@ -73,6 +75,8 @@ public class FormController {
 
     /**
      * Recherche contact
+     * @param address
+     * @return 
      */
     public CustomResponse retrieveAddress(Address address) {
         // création objet reponse
@@ -106,6 +110,8 @@ public class FormController {
 
     /**
      * Suppression contact
+     * @param address
+     * @return 
      */
     public CustomResponse deleteAddress(Address address) {
         // création objet reponse
@@ -130,6 +136,8 @@ public class FormController {
 
     /**
      * Mise à jour contact
+     * @param address
+     * @return 
      */
     public CustomResponse updateAddress(Address address) {// création objet reponse
         CustomResponse customResponse = new CustomResponse();

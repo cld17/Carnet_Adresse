@@ -14,6 +14,7 @@
 package model;
 
 public class Address {
+
     String id;
     String civilite;
     String nom;
@@ -39,7 +40,7 @@ public class Address {
     public void setId(String id) {
         this.id = id;
     }
-    
+
     public String getCivilite() {
         return civilite;
     }

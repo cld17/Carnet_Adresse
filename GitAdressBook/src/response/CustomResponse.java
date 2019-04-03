@@ -12,7 +12,6 @@ import java.util.List;
 public class CustomResponse {
 
     // TODO : amélioration : hashmap
-
     private FormatErrorEnum responseCode;
     private String errorMessage;
     private List<Address> addresses;

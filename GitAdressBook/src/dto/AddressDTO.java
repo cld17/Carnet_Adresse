@@ -6,10 +6,10 @@
  *  
  * Author : Adeline, Christophe, Cyril, Christine
  */
-
 package dto;
 
 public class AddressDTO {
+
     Integer id;
     String civilite;
     String nom;

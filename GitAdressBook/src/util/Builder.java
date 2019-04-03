@@ -10,14 +10,14 @@ import java.util.ArrayList;
 import model.Address;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class Builder {
-    
-    /**
-     * Construction AddressDTO 
-     */
 
+    /**
+     * Construction AddressDTO
+     * @param address
+     * @return 
+     */
     public static AddressDTO buildAddressDTO(Address address) {
         AddressDTO addressDTO = new AddressDTO();
 
@@ -35,8 +35,8 @@ public class Builder {
         addressDTO.setVille(address.getVille());
         addressDTO.setTelephoneMobile(address.getTelephoneMobile());
         addressDTO.setTelephoneFixe(address.getTelephoneFixe());
-      //  addressDTO.setTelephoneMobile(address.getTelephoneMobile() != null && !address.getTelephoneMobile().isEmpty() ? Integer.parseInt(address.getTelephoneMobile()) : null);
-      //  addressDTO.setTelephoneFixe(address.getTelephoneFixe() != null && !address.getTelephoneFixe().isEmpty() ? Integer.parseInt(address.getTelephoneFixe()) : null);
+        //  addressDTO.setTelephoneMobile(address.getTelephoneMobile() != null && !address.getTelephoneMobile().isEmpty() ? Integer.parseInt(address.getTelephoneMobile()) : null);
+        //  addressDTO.setTelephoneFixe(address.getTelephoneFixe() != null && !address.getTelephoneFixe().isEmpty() ? Integer.parseInt(address.getTelephoneFixe()) : null);
         addressDTO.setMailPerso(address.getMailPerso());
         addressDTO.setMailPro(address.getMailPro());
 
@@ -45,8 +45,9 @@ public class Builder {
 
     /**
      * Construction Address
+     * @param addressDTO
+     * @return 
      */
-    
     public static Address buildAddress(AddressDTO addressDTO) {
         Address address = new Address();
 
@@ -55,13 +56,13 @@ public class Builder {
         address.setNom(addressDTO.getNom());
         address.setPrenom(addressDTO.getPrenom());
         address.setAppartbat(addressDTO.getAppartbat());
-        address.setNumeroVoie(addressDTO.getNumeroVoie() != null ? addressDTO.getNumeroVoie().toString() : null);
+        address.setNumeroVoie(addressDTO.getNumeroVoie() != null ? addressDTO.getNumeroVoie() : null);
         address.setComplementNumeroVoie(addressDTO.getComplementNumeroVoie());
         address.setLibelleVoie(addressDTO.getLibelleVoie());
-        address.setCodePostal(addressDTO.getCodePostal() != null ? addressDTO.getCodePostal().toString() : null);
+        address.setCodePostal(addressDTO.getCodePostal() != null ? addressDTO.getCodePostal() : null);
         address.setVille(addressDTO.getVille());
-        address.setTelephoneMobile(addressDTO.getTelephoneMobile() != null ? addressDTO.getTelephoneMobile().toString() : null);
-        address.setTelephoneFixe(addressDTO.getTelephoneFixe() != null ? addressDTO.getTelephoneFixe().toString() : null);
+        address.setTelephoneMobile(addressDTO.getTelephoneMobile() != null ? addressDTO.getTelephoneMobile() : null);
+        address.setTelephoneFixe(addressDTO.getTelephoneFixe() != null ? addressDTO.getTelephoneFixe() : null);
         address.setMailPerso(addressDTO.getMailPerso());
         address.setMailPro(addressDTO.getMailPro());
 
@@ -70,8 +71,9 @@ public class Builder {
 
     /**
      * Construction collection : recuperation liste lors d'une recherche
+     * @param addressDTOList
+     * @return 
      */
-    
     public static List<Address> buildAddresses(List<AddressDTO> addressDTOList) {
         List<Address> resultat = new ArrayList<>();
         //            for (int i = 0; i < addressDTOList.size(); i++) {
